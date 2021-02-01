@@ -19,25 +19,9 @@ Dieses Codebuch kann auch für das gesamte Projekt verwendet werden. Die Edges u
 
 # Nodes und dazugehörige Attribute
 
-### Presserat
 
-Die Node für den Presserat. Sie soll im Zentrum des Netzwerks dargestellt werden. Diese Kategorien besitzt folgende ***Attribute***:
-
-**id**
-
-eindeutige Codierung des Knoten, wird als Name angegeben (z.B. Pressekodex)
-
-**name**
-
-Vollständiger Name des Knotens
-
-**type**
-
-Unterscheidung zwischen Presserat, Ziffer und Publikationsmedium
-
-1 = Presserat<br>
-2 = Ziffer<br>
-3 = Publikationsmedium
+0 = Ziffer<br>
+1 = Publikationsmedium
 
 
 ### Ziffern Pressekodex
@@ -55,28 +39,23 @@ Vollständiger Name des Knotens (z.B. Pressekodex Ziffer 1)
 
 **type**
 
-Unterscheidung zwischen Presserat, Ziffer und Publikationsmedium
+Unterscheidung zwischen Ziffer und Publikationsmedium
 
-1 = Presserat<br>
-2 = Ziffer<br>
-3 = Publikationsmedium
+0 = Ziffer<br>
+1 = Publikationsmedium
 
 
-### Gerügte Artikel
+### Publikationsmedium
 
 Diese Nodes stehen für die Artikel, die eine Rüge vom Presserat erhalten haben. Sie werden außen im Netzwerk dargestellt. Diese Kategorie besitzt folgende ***Attribute***:
 
 **id**
 
-eindeutige Codierung des Knoten, wird als "Publikationsmedium" + "Chronologische Nummerierung der Rüge für Publikationsmedium angegeben (z.B. Maedchen1)
+Anzeigename, entweder vollständig oder als Abkürzung (z.B. Bild, WAZ)
 
 **name**
 
-Vollständiger Name des Knotens (z.B. Grazia Magazin (1067/19/3))
-
-**infos**
-
-Aktenzeichen im Archiv des Presserats (z.B. (0031/20/2))
+Vollständiger Name des Publikationsmediums + Online/Offline (z.B. Grazia Magazin Online, Westfälischa Abendzeitung Offline)
 
 **region**
 
@@ -89,25 +68,15 @@ Handelt es sich um ein regionales oder überregionales Publikationsmedium?
 
 Unterscheidung zwischen Presserat, Ziffer und Publikationsmedium
 
-1 = Presserat<br>
-2 = Ziffer<br>
-3 = Publikationsmedium
-
-**year**
-
-Jahr, in dem die Rüge erteilt wurde. Die möglichen Zahlen reichen von 1990 bis 2020.
+0 = Ziffer<br>
+1 = Publikationsmedium
 
 **published**
 
 Definiert die Verfügbarkeit des Artikels
 
 1 = online<br>
-2 = offline<br>
-3 = beides
-
-**author**
-
-Name des Autors/der Autorin des gerügten Artikels (mit einer Spalte Abstand einzutragen, da evtl. nur Zusatzinfo)
+2 = offline
 
 
 # Edge-Attribute
@@ -119,11 +88,14 @@ Art der Rüge
 1 = öffentliche Rüge<br>
 2 = nicht-öffentliche Rüge
 
-**relationship**
-
-1 = Pressekodex<br>
-2 = verstößt gegen
-
 **year**
 
 Definiert das Jahr, in dem die Rüge erteilt worden ist
+
+**az**
+
+Aktenzeichen (z.B. (0031/20/2))
+
+**code**
+
+Codierung des gerügten Artikels (z.B. Bild/1990/1)
