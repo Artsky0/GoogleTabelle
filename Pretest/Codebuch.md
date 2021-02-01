@@ -1,5 +1,5 @@
 # Ruegen-Ranger-Pretest Codebuch #
-Codebuch Stand 2021-01-07<br>
+Codebuch Stand 2021-02-01<br>
 erstellt von Artur Stolinsky (as383@hdm-stuttgart.de)
 
 ## Inhalt
