@@ -61,8 +61,8 @@ Vollständiger Name des Publikationsmediums + Online/Offline (z.B. Grazia Magazi
 
 Handelt es sich um ein regionales oder überregionales Publikationsmedium?
 
-1 = überregional<br>
-2 = regional
+0 = überregional<br>
+1 = regional
 
 **type**
 
@@ -75,8 +75,8 @@ Unterscheidung zwischen Presserat, Ziffer und Publikationsmedium
 
 Definiert die Verfügbarkeit des Artikels
 
-1 = online<br>
-2 = offline
+0 = online<br>
+1 = offline
 
 
 # Edge-Attribute
@@ -85,8 +85,8 @@ Definiert die Verfügbarkeit des Artikels
 
 Art der Rüge
 
-1 = öffentliche Rüge<br>
-2 = nicht-öffentliche Rüge
+0 = öffentliche Rüge<br>
+1 = nicht-öffentliche Rüge
 
 **year**
 
