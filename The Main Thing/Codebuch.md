@@ -66,7 +66,7 @@ Handelt es sich um ein regionales oder überregionales Publikationsmedium?
 
 **type**
 
-Unterscheidung zwischen Presserat, Ziffer und Publikationsmedium
+Unterscheidung zwischen Ziffer und Publikationsmedium
 
 0 = Ziffer<br>
 1 = Publikationsmedium
