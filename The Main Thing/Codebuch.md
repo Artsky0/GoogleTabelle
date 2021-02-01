@@ -11,6 +11,8 @@ erstellt von Artur Stolinsky (as383@hdm-stuttgart.de)
 
 Im Pretest werden exemplarisch zehn vom Presserat öffentlich gerügte Artikel in einem Gesamtnetzwerk dargestellt. Die Daten wurden auf der Website des Presserats unter folgendem Link erhoben: (https://www.presserat.de/ruegen-presse-uebersicht.html). Die Artikel aus dem Pretest stammen von 1990 und 2020.
 
+In der endgültigen Datenerhebung werden die Daten im Zeitraum von 1990 bis 2019 erhoben. 
+
 Das Netzwerk ist ein *gerichtetes three-mode Akteursnetzwerk*. Ausgangsgangspunkt für das Netzwerk ist der Presserat.
 
 ## Weitere Anmerkungen
