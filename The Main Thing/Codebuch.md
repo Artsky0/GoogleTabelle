@@ -1,10 +1,10 @@
 # Ruegen-Ranger-Pretest Codebuch #
-Codebuch Stand 2021-02-01<br>
+Codebuch Stand 2021-02-02<br>
 erstellt von Artur Stolinsky (as383@hdm-stuttgart.de)
 
 ## Inhalt
-- Edgelist_Rügen-Ranger_Pretest.csv (Edgelist)
-- Nodelist_Rügen-Ranger_Pretest.csv (Nodelist)
+- Edgelist_Rügen-Ranger_Pretest.csv (Edgelist) [folgt]
+- Nodelist_Rügen-Ranger_Pretest.csv (Nodelist) [folgt]
 - Codebuch.md (Codierung der Datensätze)
 
 ## Ursprung und Datenerhebung
@@ -13,7 +13,7 @@ Im Pretest werden exemplarisch zehn vom Presserat öffentlich gerügte Artikel i
 
 In der endgültigen Datenerhebung werden die Daten im Zeitraum von 1990 bis 2019 erhoben. 
 
-Das Netzwerk ist ein *gerichtetes three-mode Akteursnetzwerk*. Ausgangsgangspunkt für das Netzwerk ist der Presserat.
+Das Netzwerk ist ein *gerichtetes two-mode Akteursnetzwerk*. Das Gesamtnetzwerk wird aus vielen kleinen Teilnetzwerken bestehen, ausgehend von den jeweiligen Ziffern des Pressekodex.
 
 ## Weitere Anmerkungen
 
@@ -54,6 +54,7 @@ Diese Nodes stehen für die Artikel, die eine Rüge vom Presserat erhalten haben
 **id**
 
 Anzeigename, entweder vollständig oder als Abkürzung (z.B. Bild, WAZ)
+Zur Verhinderung von gleichen **id**'s ist eine gemeinsames Dokument erstellt worden. Dort sind alle bereits verwendeten Abkürzungen und Namen vermerkt.
 
 **name**
 
@@ -83,12 +84,20 @@ Definiert die Verfügbarkeit des Artikels
 
 # Edge-Attribute
 
+**from**
+
+Ausgangspunkt der Kante (Name aus **id** verwenden)
+
+**to**
+
+Endpunkt der Kante (Name aus **id** verwenden)
+
 **weight**
 
 Art der Rüge
 
-0 = öffentliche Rüge<br>
-1 = nicht-öffentliche Rüge
+1 = öffentliche Rüge<br>
+2 = nicht-öffentliche Rüge
 
 **year**
 
