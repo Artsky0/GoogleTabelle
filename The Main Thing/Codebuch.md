@@ -33,7 +33,7 @@ Diese Kategorie besitzt folgende ***Attribute***:
 
 **id**
 
-eindeutige Codierung des Knoten, wird als "Ziffer" + Zahl angegeben (z.B. Ziffer10)
+eindeutige Codierung des Knotens, wird als "Ziffer" + Zahl angegeben (z.B. Ziffer10)
 
 **name**
 
