@@ -1,0 +1,294 @@
+id,name,type (0/1 - Ziffer oder Medium),region (0/1),published (0/1),label
+ZifferPra,Pressekodex Präambel,0,NA,NA,ZifferPra
+Ziffer1,Pressekodex Ziffer 1,0,NA,NA,Ziffer1
+Ziffer2,Pressekodex Ziffer 2,0,NA,NA,Ziffer2
+Ziffer3,Pressekodex Ziffer 3,0,NA,NA,Ziffer3
+Ziffer4,Pressekodex Ziffer 4,0,NA,NA,Ziffer4
+Ziffer5,Pressekodex Ziffer 5,0,NA,NA,Ziffer5
+Ziffer6,Pressekodex Ziffer 6,0,NA,NA,Ziffer6
+Ziffer7,Pressekodex Ziffer 7,0,NA,NA,Ziffer7
+Ziffer8,Pressekodex Ziffer 8,0,NA,NA,Ziffer8
+Ziffer9,Pressekodex Ziffer 9,0,NA,NA,Ziffer9
+Ziffer10,Pressekodex Ziffer 10,0,NA,NA,Ziffer10
+Ziffer11,Pressekodex Ziffer 11,0,NA,NA,Ziffer11
+Ziffer12,Pressekodex Ziffer 12,0,NA,NA,Ziffer12
+Ziffer13,Pressekodex Ziffer 13,0,NA,NA,Ziffer13
+Ziffer14,Pressekodex Ziffer 14,0,NA,NA,Ziffer14
+Zifferunbekannt,Pressekodex unbekannt,0,NA,NA,Zifferunbekannt
+AAO,Augsburger Allgemeine Online,1,1,0,AAO
+BildDE,Bild.de,1,0,0,BildDE
+BildO,Bild Online,1,0,0,BildO
+BMPO,Berliner Morgenpost Online,1,1,0,BMPO
+BZO,B.Z.-Online,1,1,0,BZO
+DA,Die Aktuelle,1,0,0,DA
+DHO,Die Harke Online,1,0,0,DHO
+DWO,Deutsches Waffenjournal Online,1,0,0,DWO
+ExpressO,Express Online,1,0,0,ExpressO
+FAZN,FAZ.net,1,0,0,FAZN
+FN,Fishtown News,1,1,0,FN
+FocusO,Focus Online,1,0,0,FocusO
+MO,Merkur Online,1,1,0,MO
+NWZO,Nordwest-Zeitung Online,1,1,0,NWZO
+TGSO,Tagesspiegel Online,1,0,0,TGSO
+TitanicO,Titanic Online,1,0,0,TitanicO
+TZO,TZ Online,1,1,0,TZO
+WO,WELT Online,1,0,0,WO
+AADW,Aktuelles aus der Wirtschaft,1,0,1,AADW
+ABZ,Abendzeitung,1,1,1,ABZ
+ABZM,Abendzeitung München,1,1,1,ABZM
+ABZN,Abendzeitung Nürnberg,1,1,1,ABZN
+AFDA,Alles für die Frau,1,0,1,AFDA
+AnW,Angelwoche,1,0,1,AnW
+ANZ,Andere Zeitung,1,0,1,ANZ
+AP,Animal Peace,1,0,1,AP
+ARF,Aktiv Radfahren,1,0,1,ARF
+AUGN,Augsburger News,1,1,1,AUGN
+AUM,Audimax,1,0,1,AUM
+AUZ,Auto Zeitung,1,0,1,AUZ
+AZ,Allgäuer Zeitung,1,1,1,AZ
+B1,brand eins,1,0,1,B1
+BA,Branchen Anzeiger,1,0,1,BA
+BB,Bibliser Blatt,1,1,1,BB
+BBZ,Butzbacher Zeitung,1,1,1,BBZ
+BDZ,Bergedorfer Zeitung,1,1,1,BDZ
+BE,Bürger-Echo,1,1,1,BE
+BERZ,Berliner Zeitung,1,1,1,BERZ
+BG,Bravo Girl,1,0,1,BG
+BI,Blitz-Illu,1,0,1,BI
+Bild,Bild,1,0,1,Bild
+BildA,Bild Aachen,1,1,1,BildA
+BildaS,Bild am Sonntag,1,0,1,BildaS
+BildB,Bild Berlin,1,1,1,BildB
+BildBR,Bild Bremen,1,1,1,BildBR
+BildD,Bild Dresden,1,1,1,BildD
+BildF,Bild Frankfurt,1,1,1,BildF
+BildH,Bild Hannover,1,1,1,BildH
+BildHA,Bild Hamburg,1,1,1,BildHA
+BildK,Bild Köln,1,1,1,BildK
+BildM,Bild München,1,1,1,BildM
+BildMW,Bild Mainz Wiesbaden,1,1,1,BildMW
+BildN,Bild Nürnberg,1,1,1,BildN
+BildRN,Bild Rhein-Neckar,1,1,1,BildRN
+BildS,Bild Stuttgart,1,1,1,BildS
+BK,Berliner Kurier,1,1,1,BK
+BM,Business Magazin,1,0,1,BM
+BMP,Berliner Morgenpost,1,1,1,BMP
+BOZ,Borkumer Zeitung,1,1,1,BOZ
+Bravo,Bravo,1,0,1,Bravo
+BravoHH,Bravo Hip Hop,1,0,1,BravoHH
+BravoS,Bravo Special,1,0,1,BravoS
+BRZ,Braunschweiger Zeitung,1,1,1,BRZ
+BS,Bayrische Staatszeitung,1,1,1,BS
+BSZ,Bad Sodener Zeitung,1,1,1,BSZ
+Bunte,Bunte,1,0,1,Bunte
+BWZ,Bunte Wochen Zeitung,1,0,1,BWZ
+BZ,B.Z,1,1,1,BZ
+BZB,BZ Berlin,1,1,1,BZB
+CE,City Express,1,1,1,CE
+CMP,Chemnitzer Morgenpost,1,1,1,CMP
+CN,Cuxhavener Nachrichten,1,1,1,CN
+Cond,Condition,1,0,1,Cond
+Cosmo,Cosmopolitan,1,0,1,Cosmo
+Coupe,Coupé,1,0,1,Coupe
+CPC,Computer-Partner Compact,1,0,1,CPC
+DE,Darmstädter Echo,1,1,1,DE
+DEFH,Das Einfamilienhaus,1,0,1,DEFH
+DGB,Das Goldene Blatt,1,0,1,DGB
+DGZ,Deggendorfer Zeitung,1,1,1,DGZ
+DIA,Dingolfinger Anzeiger,1,1,1,DIA
+DJ,Diabetes Journal,1,0,1,DJ
+DL,Dithmarscher Landeszeitung,1,1,1,DL
+DM,Dresdner Morgenpost,1,1,1,DM
+DN,Das Neue,1,0,1,DN
+DNB,Das Neue Blatt,1,0,1,DNB
+DNF,Die neue Frau,1,0,1,DNF
+DNT,Der Neue Tag,1,0,1,DNT
+DP,Dill-Post,1,1,1,DP
+DRP,Die Rheinpfalz,1,1,1,DRP
+DW,Die Woche,1,1,1,DW
+DWE,DerWesten,1,1,1,DWE
+DZ,Die Zeit,1,0,1,DZ
+EC,Econo,1,1,1,EC
+eJournal,E-Learning Journal,1,0,1,eJournal
+ES,Eulenspiegel,1,0,1,ES
+ET,Economy Tribune,1,0,1,ET
+ETN,European Trade News,1,0,1,ETN
+EUR,Ergotherapie und Rehabilitation,1,0,1,EUR
+Express,Express,1,1,1,Express
+EZ,Eifel-Zeitung,1,1,1,EZ
+FA,Frau Aktuell,1,0,1,FA
+FAZ,Frankfurter Allgemeine Zeitung,1,0,1,FAZ
+FE,Freizeit Express,1,0,1,FE
+FHM,For Him Magazin,1,0,1,FHM
+FM,Fit Mama,1,0,1,FM
+FNP,Frankfurter neue Presse,1,1,1,FNP
+Focus,Focus,1,0,1,Focus
+FocusM,Focus Money,1,0,1,FocusM
+FR,Freizeit Revue,1,0,1,FR
+FRP,Frankenpost,1,1,1,FRP
+FRW,Freizeitwoche,1,0,1,FRW
+FS,Für Sie,1,0,1,FS
+FW,Fernsehwoche,1,0,1,FW
+FZ,Fränkischer Tag,1,1,1,FZ
+GLAM,Glamour,1,0,1,GLAM
+GM,Gesunde Medizin,1,0,1,GM
+GoL,Go Longlife,1,0,1,GoL
+GONG,Gong,1,0,1,GONG
+GP,Graue Panther,1,1,1,GP
+GZ,Goslarsche Zeitung,1,1,1,GZ
+HAB,Hamburger Abendblatt,1,1,1,HAB
+HAZ,Hannoversche Allgemeine Zeitung,1,1,1,HAZ
+HK,Höchster Kreisblatt,1,1,1,HK
+HLZ,Hinterländer Anzeiger,1,1,1,HLZ
+HM,Hamburger Morgenpost,1,1,1,HM
+Hoerzu,Hörzu,1,0,1,Hoerzu
+HS,Heilbronner Stimme,1,1,1,HS
+Huerriyet,Hürriyet,1,0,1,Huerriyet
+HUS,Health & Sales,1,0,1,HUS
+HUW,Heim und Welt,1,0,1,HUW
+HZ,Hersfelder Zeitung,1,1,1,HZ
+Impulse,Impulse,1,0,1,Impulse
+IN,IN,1,0,1,IN
+IS,Idea-Spektrum,1,0,1,IS
+J,Jetzt,1,0,1,J
+JF,Junge Freiheit,1,0,1,JF
+JW,Junge Welt,1,0,1,JW
+KE,Kölner Express,1,1,1,KE
+KI,Kölner Illustrierte,1,1,1,KI
+Kicker,Kicker,1,0,1,Kicker
+KL,Kanzlei Life,1,0,1,KL
+KSA,Kölner Stadt-Anzeiger,1,1,1,KSA
+KWM,Kicker WM-Sonderheft 2010,1,0,1,KWM
+LAM,L.A. Multimedia,1,0,1,LAM
+Lauf,Laufzeit,1,0,1,Lauf
+Laura,Laura,1,0,1,Laura
+LDZ,Leine-Deister-Zeitung,1,1,1,LDZ
+Lea,Lea,1,0,1,Lea
+LN,Lübecker Nachrichten,1,1,1,LN
+LP,Landpost,1,0,1,LP
+LueP,Lünepost,1,1,1,LueP
+LV,Leipziger Volkszeitung,1,1,1,LV
+LZ,Leine Zeitung,1,1,1,LZ
+MA,Maxim,1,0,1,MA
+Mata,Matador,1,0,1,Mata
+MAX,Max,1,1,1,MAX
+MBZ,Mittelbayerische Zeitung,1,1,1,MBZ
+ME,Mitteldeutscher Express,1,1,1,ME
+Merian,Merian,1,0,1,Merian
+MF,Meine Freizeit,1,0,1,MF
+MG,Mein Geld,1,0,1,MG
+MM,Münchener Merkur,1,1,1,MM
+MMP,Mach mal Pause,1,0,1,MMP
+MNZ,Marburger Neue Zeitung,1,1,1,MNZ
+MRUP,Magazin Reise & Preise,1,0,1,MRUP
+MTA,Maintal Tagesanzeiger,1,1,1,MTA
+Myself,Myself,1,0,1,Myself
+MZ,Münsterische Zeitung,1,1,1,MZ
+ND,Neues Deutschland,1,0,1,ND
+NK,Nordkurier,1,1,1,NK
+NMN,Neumarkter Nachrichten,1,1,1,NMN
+NN,Nürnberger Nachrichten,1,1,1,NN
+NP,Neue Post,1,0,1,NP
+NPR,Neue Presse,1,1,1,NPR
+NR,Neue Revue,1,0,1,NR
+NRZ,N.R.Z.,1,1,1,NRZ
+NW,Neue Westfälische,1,1,1,NW
+NWZ,Nordwest-Zeitung,1,1,1,NWZ
+Oeko,Öko-Test,1,0,1,Oeko
+OFK,Ostfriesischer Kurier,1,1,1,OFK
+OFN,Ostfriesische Nachrichten,1,1,1,OFN
+OHA,Ostholsteiner Anzeiger,1,1,1,OHA
+OP,Offenbach-Post,1,1,1,OP
+OSTZ,Ostsee-Zeitung,1,1,1,OSTZ
+OVB,Oberbayerisches Volksblatt,1,1,1,OVB
+PAZ,Peiner Allgemeine Zeitung,1,1,1,PAZ
+PCgo,PCgo,1,0,1,PCgo
+PCM,PC Magazin,1,0,1,PCM
+PCP,PC Praxis,1,0,1,PCP
+PCW,PC Welt,1,0,1,PCW
+Playboy,Playboy,1,0,1,Playboy
+POP,Popcorn,1,0,1,POP
+Praline,Praline,1,0,1,Praline
+PREM,PREMIUS,1,0,1,PREM
+Prisma,Prisma,1,0,1,Prisma
+PS,PS Magazin,1,0,1,PS
+PW,Promi Welt,1,0,1,PW
+PZ,Pforzheimer Zeitung,1,1,1,PZ
+Quick,Quick,1,0,1,Quick
+Quix,Quix! (Eltern Family-Beilage),1,0,1,Quix
+RAT,"Ratgeber für Haus, Wohnung und Garten",1,0,1,RAT
+RCF,RC-Freizeit,1,0,1,RCF
+RE,Rochade Europa,1,0,1,RE
+RF,Reisefieber,1,0,1,RF
+RK,Rothenburger Kreiszeitung,1,1,1,RK
+RNR,Rundblick Nord-Report,1,1,1,RNR
+RP,Rheinische Post,1,1,1,RP
+RS,Reviersport,1,0,1,RS
+RTV,RTV,1,0,1,RTV
+Rubin,Rubin,1,0,1,Rubin
+RUN,Rundy,1,0,1,RUN
+Runn,Running,1,0,1,Run
+RZ,Rhein Zeitung,1,1,1,RZ
+SA,Sonntag Aktuell,1,1,1,SA
+Sabah,Sabah,1,0,1,Sabah
+SAEZ,Sächsische Zeitung,1,1,1,SAEZ
+SAZ,Saarbrückender Zeitung,1,1,1,SAZ
+SB,Selber Bauen,1,0,1,SB
+SCHB,Schwarzwälder Bote,1,1,1,SCHB
+SCHN,Schleswiger Nachrichten,1,1,1,SCHN
+SCHP,Schwarzwälder Post,1,1,1,SCHP
+SCHZ,Schwäbische Zeitung,1,1,1,SCHZ
+Segeln,Segeln,1,0,1,Segeln
+SGZ,Siegener Zeitung,1,1,1,SGZ
+Shape,Shape,1,0,1,Shape
+SHBT,Schifffahrt Hafen Bahn und Technik,1,0,1,SHBT
+SIZ,Sindelfinger Zeitung,1,1,1,SIZ
+SPHT,Standortpresse/Haller Tageblatt,1,1,1,SPHT
+Stern,Stern,1,0,1,Stern
+STT,Straubinger Tagblatt,1,1,1,STT
+STU,Stuttgarter Zeitung,1,1,1,STU
+Sugar,Sugar,1,0,1,Sugar
+Super,Super,1,0,1,Super
+SuperI,Super Illu,1,0,1,SuperI
+SZ,Süddeutsche Zeitung,1,0,1,SZ
+Tango,Tango,1,0,1,Tango
+Taz,TAZ,1,0,1,Taz
+Tempo,Tempo,1,0,1,Tempo
+TGS,Tagesspiegel,1,1,1,TGS
+TGZ,Torgauer Zeitung,1,1,1,TGZ
+THA,Thüringer Allgemeine,1,1,1,THA
+Tina,Tina,1,0,1,Tina
+Titanic,Titanic,1,0,1,Titanic
+TMK,Top Magazin Karlsruhe,1,1,1,TMK
+TS,Telestunde,1,0,1,TS
+TV,TV Hören und Sehen,1,0,1,TV
+TV14,TV14,1,0,1,TV14
+TVS,TV Spielfilm,1,0,1,TVS
+TZ,Tageszeitung,1,1,1,TZ
+TZM,TZ München,1,1,1,TZM
+UNI,Unicum,1,0,1,UNI
+UUM,Umbauen und Modernisieren,1,0,1,UUM
+VA,Vogtland-Anzeiger,1,1,1,VA
+VBK,Verlag B. Kämmer,1,0,1,VBK
+VEN,Ventil,1,0,1,VEN
+VFZF,Von Frau zu Frau,1,0,1,VFZF
+VM,Volksstimme Magdeburg,1,1,1,VM
+VO,Vogue,1,0,1,VO
+VS,Viel Spaß,1,0,1,VS
+WAZ,Westdeutsche Allgemeine Zeitung,1,1,1,WAZ
+Welt,Die Welt,1,0,1,Welt
+WeltAS,Welt am Sonntag,1,0,1,WeltAS
+WELZ,Waldeckische Landes-zeitung,1,1,1,WELZ
+WET,Wetterauer Zeitung,1,1,1,WET
+WF,Wirtschaftsforum,1,0,1,WF
+WFB,Westfalen-Blatt,1,1,1,WFB
+WHN,Weinheimer Nachrichten,1,1,1,WHN
+WK,Weser-Kurier,1,1,1,WK
+WNZ,Wetzlarer Neue Zeitung,1,1,1,WNZ
+WUH,Wild und Hund,1,0,1,WUH
+WZ,Wilhelmshavener Zeitung,1,1,1,WZ
+YA,Yoga-Aktuell,1,0,1,YA
+OBPO,Offenbach Post Online,1,1,1,OBPO
+PCWO,PC Welt Online,1,0,1,PCWO
+SAEZO,Sächsische Zeitung Online,1,1,1,SAEZO
+TAZO,TAZ Online,1,0,1,TAZO
