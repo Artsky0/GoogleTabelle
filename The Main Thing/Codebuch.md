@@ -17,7 +17,7 @@ Das Netzwerk ist ein *gerichtetes two-mode Akteursnetzwerk*. Das Gesamtnetzwerk 
 
 ## Weitere Anmerkungen
 
-Dieses Codebuch kann auch für das gesamte Projekt verwendet werden. Die Edges und Nodes bleiben dieselben, nur der Umfang des Gesamtnetzwerks ist erhöht.
+Dieses Codebuch wird für das restliche Projekt verwendet werden. Das Codebuch wird bei Änderungen schnellstmöglich aktualisiert.
 
 # Nodes und dazugehörige Attribute
 
