@@ -1,4 +1,4 @@
-id,name,type (0/1 - Ziffer oder Medium),region (0/1),published (0/1),label
+id,name,type,region,published,label
 ZifferPra,Pressekodex Präambel,0,NA,NA,ZifferPra
 Ziffer1,Pressekodex Ziffer 1,0,NA,NA,Ziffer1
 Ziffer2,Pressekodex Ziffer 2,0,NA,NA,Ziffer2
