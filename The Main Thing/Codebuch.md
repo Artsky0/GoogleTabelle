@@ -1,10 +1,10 @@
 # Ruegen-Ranger-Pretest Codebuch #
-Codebuch Stand 2021-02-02<br>
+Codebuch Stand 2021-03-10<br>
 erstellt von Artur Stolinsky (as383@hdm-stuttgart.de)
 
 ## Inhalt
-- Edgelist_Rügen-Ranger_Pretest.csv (Edgelist) [folgt]
-- Nodelist_Rügen-Ranger_Pretest.csv (Nodelist) [folgt]
+- Finale_Edgelist_Rügen-Ranger.csv
+- Finale_Nodelist_Rügen-Ranger.csv 
 - Codebuch.md (Codierung der Datensätze)
 
 ## Ursprung und Datenerhebung
@@ -28,12 +28,12 @@ Dieses Codebuch kann auch für das gesamte Projekt verwendet werden. Die Edges u
 
 ### Ziffern Pressekodex
 
-Diese Nodes stehen für einzelne Ziffern des Pressekodex, gegen die verstoßen worden ist. Sie werden im Netzwerk zwischen dem Presserat und den gerügten Artikeln dargestellt. Ziffern, gegen die von keinem Artikel verstoßen worden sind, werden nicht in Nodelist und Netzwerk berücksichtigt. Die Ziffern 3, 5 und 14 - 16 werden nicht berücksichtigt.
+Diese Nodes stehen für einzelne Ziffern des Pressekodex, gegen die verstoßen worden ist. Sie werden im Netzwerk zwischen dem Presserat und den gerügten Artikeln dargestellt. Außerdem gibt es die Nodes ZifferPra und Zifferunbekannt. Ersteres für die Präambel, Zweiteres für Artikel, zu denen keine Ziffer gefunden wurden. Ziffern, gegen die von keinem Artikel verstoßen worden sind, werden nicht in Nodelist und Netzwerk berücksichtigt. Gegen die Ziffern 15 und 16 gab es keinen Verstoß, diese sind in der Nodelist nicht zu finden.
 Diese Kategorie besitzt folgende ***Attribute***:
 
 **id**
 
-eindeutige Codierung des Knotens, wird als "Ziffer" + Zahl angegeben (z.B. Ziffer10)
+eindeutige Codierung des Knotens, wird als "Ziffer" + Zahl angegeben (z.B. Ziffer10). Ausnahmen: ZifferPra und Zifferunbekannt
 
 **name**
 
