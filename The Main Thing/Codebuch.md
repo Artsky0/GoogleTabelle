@@ -65,7 +65,8 @@ Vollständiger Name des Publikationsmediums + Online/Offline (z.B. Grazia Magazi
 Handelt es sich um ein regionales oder überregionales Publikationsmedium?
 
 0 = überregional<br>
-1 = regional
+1 = regional<br>
+3 = "NA"
 
 **type**
 
@@ -79,7 +80,8 @@ Unterscheidung zwischen Ziffer und Publikationsmedium
 Definiert die Verfügbarkeit des Artikels
 
 0 = online<br>
-1 = offline
+1 = offline<br>
+3 = "NA"
 
 
 # Edge-Attribute
@@ -110,3 +112,29 @@ Aktenzeichen (z.B. (0031/20/2))
 **code**
 
 Codierung des gerügten Artikels (z.B. Bild/1990/1)
+
+# Einheitliche Gestaltung in RStudio
+
+Um die Gestaltung der Chunks im Code zu vereinheitlichen, werden gestalterische Entscheidungen für Visualisierungen hier festgehalten. Die Befehle sind entweder global (erster Chunk) oder lokal (betroffener Chunk/Plot). Außerdem findet hier eine Unterscheidung zwischen Chunk- und Plot-Befehlen statt. Plot-Befehle sind per Definition immer lokal gesetzt.
+
+**Chunk-Befehle**
+
+*V(x)$frame.color <- "NA"* (global)<br>
+*V(x)[V(x)$type == 0]$shape <- "square"* oder *"circle"* (global)<br>
+*E(x)$arrow.size <- 0.1* (global)<br>
+*V(x)[V(x)$label == "Medium"]$color* (lokal)
+
+Verwendete Farben:
+
+*mediumaquamarine* (türkis)<br>
+*lavenderblush4* (mittleres grau)<br>
+*grey80* (hellgrau)<br>
+*mediumseagreen* (grün-blau)<br>
+*deepskyblue4* (normales blau)
+
+
+**Plot-Befehle**
+
+*vertex.size* zwischen 4 und 10<br>
+*vertex.label.color* = "black"<br>
+*vertex.label.cex=c(0.3)* oder *c(0.5)*
