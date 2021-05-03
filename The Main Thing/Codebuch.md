@@ -1,4 +1,4 @@
-# Ruegen-Ranger Codebuch #
+# Rügen-Ranger Codebuch #
 Codebuch Stand 2021-05-03<br>
 erstellt von Artur Stolinsky (as383@hdm-stuttgart.de)
 
