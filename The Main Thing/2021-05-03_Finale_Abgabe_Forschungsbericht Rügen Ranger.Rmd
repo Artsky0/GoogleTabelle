@@ -1,0 +1,2675 @@
+---
+title: "Forschungsbericht Rügen Ranger"
+subtitle: "Analyse der Rügen des Presserats von 1990-2019"
+author: "Rügen Ranger: Maren Krämer (mk341), Artur Stolinsky (as383), Barbara Beck (bb097), Eileen Wagner (ew043), Kristiyana Kirilova (kk149), Annegret Leichte (al123)"
+date: '`r format(Sys.Date(), "%d. %B %Y")`'
+output:  
+  html_document: 
+    toc: yes
+    number_sections: yes
+    fig_width: 16
+    fig_height: 9
+  word_document:
+    toc: yes
+    toc_depth: '3'
+  pdf_document:
+    toc: yes
+    toc_depth: '3'
+editor_options: 
+  markdown: 
+    wrap: sentence
+---
+
+## Zusammenfassung Abstract
+
+Die vorliegende Netzwerkanalyse behandelt die vom Presserat ausgesprochenen Rügen zwischen 1990 und 2019.
+In einem gerichteten two-mode Netzwerk untersuchten wir, welche Medien besonders oft vom Presserat gerügt wurden und gegen welche Ziffer am meisten verstoßen wurde.
+Dabei stellte sich heraus, dass gegen die Ziffer 8, die den Schutz der Persönlichkeit in Berichterstattungen festlegt, am häufigsten verstoßen wurde.
+Außerdem wurden viele Medien dafür gerügt, dass sie keine klare Trennung von Werbung und Redaktion vornahmen.
+Das Medium mit den meisten Rügen ist die Bild-Zeitung.
+Besonders im Bereich des Boulevardjournalismus ließen sich Gemeinsamkeiten erkennen: Solche Zeitungen wurden häufig wegen Verstößen gegen die Ziffern 8 und 2 gerügt.
+
+Keywords: Netzwerkanalyse, Presserat, Pressekodex, Bild-Zeitung, Rügen
+
+## 1. Einleitung
+
+Wir untersuchen, wie der Presserat im Zeitraum zwischen 1990 und 2019 Rügen an die Medien vergeben hat.
+Dabei interessiert uns besonders, ob es zeithistorische Zusammenhänge mit Verstößen gegen die jeweiligen Ziffern des Pressekodex zu erkennen sind.
+Hierzu haben wir die Variablen (Medium, Ziffer, Aktenzeichen) aufgelistet und sie in regional/überregional, online/offline und nach Jahren unterteilt.
+Bei den Variablen interessiert uns besonders, welches Medium am häufigsten gerügt wurde und gegen welche Ziffer besonders oft verstoßen wurde.
+
+### Forschungsfrage
+
+Wir möchten mit unserer Forschung herausfinden, welche Medien besonders oft gerügt wurden, gegen welche Ziffern besonders oft verstoßen wurde und wie sich das im Zeitraum von 1990 bis 2019 entwickelt hat.
+
+### Motivation
+
+Als Journalismus-Studenten interessieren wir uns für die Medien-Branche.
+Wir wollten sehen, ob der Presserat seinen Zweck als unabhängiges Gremium erfüllt und ob die Rügen zur Veränderung in der Berichterstattung führen.
+
+### Vorbemerkung
+
+Wir verwenden zur Visualisierung nicht nur igraph, sondern auch externe Flourish-Grafiken.
+Um diese sehen zu können, wechseln Sie bitte in die Ansicht "Visual Editor" (oben rechts neben dem Inhaltsverzeichnis).
+
+## 2. Definitionen
+
+### Presserat
+
+Seit mittlerweile 59 Jahren (mit Unterbrechung) urteilt der Presserat über die Medien in Deutschland.
+1956 wurde der Rat mit dem Auftrag gegründet, die Pressefreiheit zu schützen und das Ansehen der Presse zu wahren (Facius 2006).
+Der Rat sollte als freiwillige Selbstkontrolle der Medien fungieren, um eine staatliche Kontrolle zu verhindern (ebd.).
+In den frühen 1950er-Jahren wollte die Bundesregierung ein Bundespressegesetz erlassen.
+Um der staatlichen Medienkontrolle aus dem Weg zu gehen, gründeten fünf Zeitungsverleger und fünf Journalisten den Deutschen Presserat nach Vorbild des britischen Presserates (DPB, 2016).
+Erst seit 2009 ist der Presserat auch für die Beschwerden über Online-Angebote der Medien zuständig.
+Das Radio- und Fernsehangebot wird von anderen Instanzen beaufsichtigt (ebd.)
+
+### Pressefreiheit
+
+Die rechtliche Grundlage für den Presserat wurde 1976 gelegt.
+Das „Gesetz zur Gewährleistung der Unabhängigkeit des vom Deutschen Presserat eingesetzten Beschwerdeausschusses" wurde im Bürgerlichen Gesetzbuch niedergeschrieben (BGBI, S. 225). Hier wurde festgelegt, dass der Presserat vom Bund mit zweckgebundenen Mitteln unterstützt wird, um seine im Pressekodex festgelegten Aufgaben wahrnehmen zu können (ebd.). Durch das Gesetz sollte der Presserat als unabhängiges Gremium etabliert werden (Facius, 2006).
+
+### Ablauf Kontrollsystem
+
+Beschwerden können von Leserinnen und Lesern beim Presserat eingereicht werden, wenn diese der Meinung sind, dass eine Berichterstattung gegen den Pressekodex verstößt (ebd.).
+Die verantwortliche Redaktion muss daraufhin gegenüber dem Pressekodex Stellung nehmen.
+In einem Beschwerdeausschuss von sechs bis acht Personen wird der Fall diskutiert.
+Dabei muss die Hälfte der Personen im Journalismus, die andere Hälfte im Verlagswesen tätig sein.
+Beschwerden können als unbegründet abgelehnt werden, wenn keine Verletzung des Pressekodex vorliegt (ebd.).
+Falls jedoch eine Verletzung vorliegt, hat er die Wahl aus drei Sanktionsmöglichkeiten: Er kann einen Hinweis oder eine Missbilligung aussprechen.
+Wenn ethische Standards erheblich verletzt werden, spricht er eine öffentliche Rüge aus.
+In diesem Fall ist die Redaktion verpflichtet, die öffentliche Rüge zu veröffentlichen (ebd.).
+Beschwerden können online auf der Website des Presserates eingereicht werden.
+Die Anzahl der Beschwerden die den Presserat erreichen, steigt zunehmend: "Zum Vergleich: 2009 meldeten sich 1.268 Personen beim Presserat. Im Jahr 2013 waren es 1.347, im Jahr 2015 stieg die Zahl der Beschwerden auf 2.358." (DPB, 2016)
+
+### Pressekodex
+
+Der Pressekodex ist eine Sammlung journalistisch-ethischer Grundregeln, die vom Presserat 1973 vorgelegt wurde.
+16 Ziffern bilden die Grundlage für die Beurteilung von publizistischen Grundsätzen.
+Die meisten deutschen Verleger und Journalisten haben der freiwilligen Selbstverpflichtung zugestimmt und bekennen sich dazu, den Pressekodex zu achten.
+
+-   Die Präambel legt die Berufsethik des Journalismus fest.
+-   Ziffer 1 (Wahrhaftigkeit und Achtung der Menschenwürde) = Durch die Ziffer 1 wird die Achtung vor der Wahrheit, sowie die Achtung der Menschenwürde sichergestellt und die Journalisten werden zur wahrhaftigen Berichterstattung gegenüber der Öffentlichkeit angehalten.
+-   Ziffer 2 (Sorgfalt) = Der Grundsatz der Ziffer 2 ist, dass die Medien sorgfältig arbeiten und Informationen wahrheitsgetreu wiedergeben müssen.
+-   Ziffer 3 (Richtigstellung) = Ziffer 3 bestimmt, dass bereits veröffentlichte Berichterstattungen, die sich im Nachhinein als falsch herausstellen, vom Medium umgehend richtig gestellt werden müssen.
+-   Ziffer 4 (Grenzen der Recherche) = Laut Ziffer 4 dürfen Journalisten nicht unlautere Methoden verwenden, um Informationen zu beschaffen.
+-   Ziffer 5 (Berufsgeheimnis) = Ziffer 5 legt das Berufsgeheimnis fest. Die Presse wahrt die vereinbarte Vertraulichkeit, und gibt Informanten nicht ohne deren Zustimmung preis.
+-   Ziffer 6 (Trennung von Tätigkeiten) = Ziffer 6 unterscheidet Journalisten und Verleger, die keine Tätigkeiten ausüben, die die Glaubwürdigkeit der Presse in Frage stellen könnten.
+-   Ziffer 7 (Trennung von Werbung und Redaktion) = Die Verantwortung der Presse gegenüber der Öffentlichkeit gebietet, dass redaktionelle Veröffentlichungen nicht durch private oder geschäftliche Interessen Dritter oder durch persönliche wirtschaftliche Interessen der Journalistinnen und Journalisten beeinflusst werden.
+-   Ziffer 8 (Schutz der Persönlichkeit) = Die Presse achtet das Privatleben des Menschen und seine informationelle Selbstbestimmung.
+-   Ziffer 9 (Schutz der Ehre) = Sie legt die journalistische Ethik fest, falls Menschen in ihrer Ehre mit unangemessenen Darstellungen in Wort und Bild verletzt wurden.
+-   Ziffer 10 (Religion, Weltanschauung, Sitte) = Die Presse verzichtet darauf, religiöse, weltanschauliche oder sittliche Überzeugungen zu schmähen.
+-   Ziffer 11 (Sensationsberichterstattung, Jugendschutz) = Es verpflichtet die Redakteure keine unangemessen sensationelle Darstellung von Gewalt, Brutalität und Leid veröffentlicht werden. Die Presse beachtet den Jugendschutz.
+-   Ziffer 12 (Diskriminierungen) = Die Ziffer 12 verpflichtet die Redakteure darauf zu achten, dass in der Berichterstattung niemand aufgrund seines Geschlechts, einer Behinderung oder einer Zugehörigkeit zu einer ethischen, religiösen, sozialen oder nationalen Gruppe diskriminiert wird.
+-   Ziffer 13 (Unschuldsvermutungen) = Die Ziffer 13 legt den Grundsatz der Unschuldsvermutung der Presse und eine frei von Vorurteilen formulierte Berichterstattung fest.
+-   Ziffer 14 (Medizin-Berichterstattungen) = Die Ziffer 14 schreibt vor, dass bei Berichterstattungen über medizinische Themen jegliche Darstellungen zu vermeiden sind, die unbegründete Befürchtungen oder Hoffnungen beim Leser erwecken könnten.
+-   Ziffer 15 (Vergünstigungen) = Die Ziffer 15 verbietet Vorteile jeder Art, die geeignet sein können, die Entscheidungsfreiheit von Verlag und Redaktion zu beeinträchtigen.
+-   Ziffer 16 (Eigenveröffentlichung) = Die Ziffer 16 legt die Pflicht zur Transparenz von öffentlich ausgesprochenen Rügen von Publikationsorganen und Telemedien fest.
+
+## 3. Forschungsstand
+
+Die Öffentlichkeit hat eine gewisse Kenntnis über die Verstöße gegen den Pressekodex.
+Denn die Rügen sind im Archiv des Presserats einsehbar.
+Außerdem werden Jahresberichte veröffentlicht und die Berichterstattung greift diese auf.
+Neben den Veröffentlichungen des Presserats gibt es auch zahlreiche Forschungen zum Presserat und seiner Rolle als unabhängiges Gremium.
+Nach Einschätzung der Journalistenvereinigung Netzwerk Research ist der Deutsche Presserat eine sehr wichtige Einrichtung.
+Die Festlegung auf das Prinzip der konsensorientierten Selbstkontrolle führt aber dazu, dass wichtige Konflikte in Zeitungen und Zeitschriften ausgeklammert werden (Netzwerk Recherche, 2006).
+Auch gibt es viele Studien, die sich explizit mit der Entwicklung der Berichterstattung und damit auch mit den jährlichen Rügen des Presserats beschäftigen.
+Hier wird ähnlich wie in unserer Analyse, die Zahl der Rügen und der eingegangenen Beschwerden im Jahresverlauf verglichen sowie die Medienhäuser herausgearbeitet, die besonders oft gerügt wurden.
+Eine genaue Trennung zwischen online und offline Medien wurde in diesen Studien nicht berücksichtigt.
+Unsere Analyse will diese Forschungslücke schließen, daher analysieren wir neben regionalen und überregionalen auch die öffentlichen und nicht öffentlichen Medien sowie die online und offline Berichterstattung.
+
+### Arbeitshypothesen
+
+Wir gehen von folgenden Arbeitshypothesen aus: a) das Medium Bild hat wahrscheinlich den höchsten Degree-Wert, denn in mehreren Forschungen wurde darauf hingewiesen, dass das Medium die meisten Verstöße aufweist und den Presserat nicht ernst nimmt.
+b) Aufgrund der fehlenden Sanktionen kommt der Presserat seiner im Pressekodex formulierten Aufgaben nicht genug nach.
+c) Aufgrund der Digitalisierung und der fehlenden Strafen haben die Rügen mit den Jahren konstant zugenommen.
+d) Aufgrund der Skandalisierung der Medien und dem Wandel des Journalismus wurde am meisten gegen die Ziffer 8 (= Schutz der Persönlichkeit) und die Ziffer 7 (=Trennung von Werbung und Redaktion) verstoßen.
+
+## 4. Datenerhebung
+
+### Zugang
+
+Die Daten bezogen wir von der Website und dem Archiv des Presserates, der für jeden öffentlich zugänglich ist.
+Auch verglichen wir unsere Ergebnisse mit vorherigen Forschungen zum Thema Presserat und Rügen.
+
+### Bereinigung
+
+Im Datensatz haben wir die Medien durch zusätzliche Variablen ergänzt (regional/überregional, online/offline) und nach Jahren unterteilt.
+Außerdem haben wir die Variable label hinzugefügt, die in unserer Darstellung in R als Name angezeigt wird.
+Wir haben den Rügen ein eigenes Aktenzeichen zugeordnet, in dem Format: (Abkürzung des Mediums/Jahr/Nummer des Verstoßes in dem Jahr) z.B.
+(ABZ/1990/1).
+Der Datensatz ist unter Github verfügbar.
+
+### Codebuch
+
+Das Codebuch beschreibt die Variablen und Relationen des Netzwerks und ist ebenfalls auf Github hinterlegt.
+
+Unsere Links:
+
+GitHub: <https://github.com/Artsky0/Ruegen-Ranger/tree/main/The%20Main%20Thing>
+
+Codebuch: <https://github.com/Artsky0/Ruegen-Ranger/blob/main/The%20Main%20Thing/Codebuch.md>
+
+## 5. Analyse und Interpretation
+
+```{r Netzwerk einlesen, echo=TRUE, fig.height=9, fig.width=16, message=FALSE, warning=FALSE, paged.print=TRUE}
+
+library(tidyverse)
+library(igraph)
+
+# Anzeige des Texts in utf-8
+
+options(encoding="utf-8")
+
+# Globale Chunk-Optionen setzen über Knitr
+
+knitr::opts_chunk$set(message=F, echo=F, results=F,  fig.height=9, fig.width=16)
+
+# Einlesen der Edge- und Nodelist aus Github
+
+elfinal <- read.csv("https://raw.githubusercontent.com/Artsky0/Ruegen-Ranger/main/The%20Main%20Thing/Finale_Edgelist_R%C3%BCgen-Ranger.csv", header=T, as.is=T, sep = ",")
+nodesfinal <- read.csv("https://raw.githubusercontent.com/Artsky0/Ruegen-Ranger/main/The%20Main%20Thing/Finale_Nodelist_R%C3%BCgen-Ranger.csv", header=T, as.is=T, sep = ",")
+
+# Matrix erstellen
+
+edgematrix <-as.matrix(elfinal)
+
+par(mar=c(1,1,1,1))
+
+# Zusammenführen von Edge- und Nodelist als igraph-Objekt
+ 
+RRFinal_u <- graph_from_data_frame(d=edgematrix, vertices=nodesfinal, directed=FALSE)
+RRFinal_d <- graph_from_data_frame(d=edgematrix, vertices=nodesfinal, directed=TRUE)
+
+plot(RRFinal_u,
+     main="Gesamtetzwerk",
+     sub="ungerichtet")
+plot(RRFinal_d,
+     main="Gesamtnetzwerk",
+     sub="gerichtet")
+```
+
+## Gesamtnetzwerke
+
+Wir erstellten zwei Netzwerke RRFinal_u und RRFinal_d.
+RRFinal_u ist ein ungerichtetes Netzwerk und RRFinal_d ein gerichtetes.
+Diese Unterscheidung ist wichtig, weil wir bei der Visualisierung zwischen den Ziffern unterscheiden müssen, die nur outdegrees haben (weil sie in der Edgelist links stehen) und den Medien, die nur indegrees haben (weil sie rechts stehen).
+Bei der Visualisierung erkennt man, dass sich die Netzwerke untereinander nicht unterscheiden, weil sich an den in- und outdegrees nichts verändert.
+Das Netzwerk selbst scheint sehr unübersichtlich zu sein.
+Die Namen sind kaum lesbar, die Knoten stehen zu eng beieinander und man erkennt nicht genau, ob es sich um eine Ziffer oder ein Medienhaus handelt.
+Deshalb ist es sinnvoll, dass Netzwerk vereinfacht darzustellen.
+Um die Unterscheidung zwischen Ziffer und Medienhaus in unserem two-mode Netzwerk zu verdeutlichen, haben wir den Ziffern eine rechteckige Visualisierung zugewiesen.
+Die Knoten der Medienhäuser sind wiederum als Kreise dargestellt.
+Zusätzlich haben wir das Netzwerk zur besseren Visualisierung mit dem layout_nicely verschönert.
+
+### Erste Darstellung des Gesamtnetzwerks
+
+```{r Gesamtnetzwerk und grobe Anpassungen, fig.height=9, fig.width=16}
+
+# Grundattribute für alle Netzwerke
+
+V(RRFinal_u)$frame.color <- "NA"
+V(RRFinal_d)$frame.color <- "NA"
+V(RRFinal_u)[V(RRFinal_u)$type == 0]$shape <- "square"
+V(RRFinal_u)[V(RRFinal_u)$type == 1]$shape <- "circle"
+V(RRFinal_d)[V(RRFinal_d)$type == 0]$shape <- "square"
+V(RRFinal_d)[V(RRFinal_d)$type == 1]$shape <- "circle"
+E(RRFinal_d)$arrow.size <- 0.1
+
+# simple Visualisierung, um das Netzwerk zu überprüfen
+
+plot(RRFinal_u,
+     asp=0,
+     layout=layout_nicely,
+     vertex.size = 6,
+     vertex.label.color = "black",
+     main="Gesamtnetzwerk undirected",
+     sub="Mit ersten Verschönerungen")
+
+plot(RRFinal_d,
+     asp=0,
+     layout=layout_nicely,
+     vertex.size = 6,
+     vertex.label.color = "black",
+     main="Gesamtnetzwerk directed",
+     sub="Mit ersten Verschönerungen")
+```
+
+Die erste Darstellung des Gesamtnetzwerks scheint noch ziemlich unübersichtlich, daher werden wir im weiteren Bericht viel mit Teilnetzwerken arbeiten.
+
+## Simple Datenerhebung
+
+```{r Kennzahlen zum Gesamtnetzwerk, echo=TRUE, fig.height=9, fig.width=16}
+
+# anzeigen der Knoten und Kanten (bei beiden Netzwerken gleich)
+
+RRFinal_u
+RRFinal_d
+
+# berechnen der Dichte
+
+edge_density(RRFinal_u)
+
+# Versuch: simplifizieren des Netzwerks
+
+# simpleRRFinal_u <- simplify(RRFinal_u, remove.multiple = TRUE, remove.loops = TRUE)
+# edge_density(simpleRRFinal_u)
+
+# Fehlermeldung, R stürzt ab
+
+# welche Knoten sind am weitesten voneinander entfernt?
+
+farthest_vertices(RRFinal_u)
+
+# was ist also der Durchmesser?
+
+get_diameter(RRFinal_u)
+
+# Hinweis: diesen Wert zeigt es auch schon mithilfe von farthest_vertices an
+
+ # was ist die mittlere Pfaddistanz?
+
+mean_distance(RRFinal_u)
+
+# Anzahl Kanten Gesamt
+
+ecount(RRFinal_u)
+
+```
+
+Da wir in der vorherigen Visualisierung sehen konnten, dass die Netzwerke RRFinal_u und RRFinal_d gleich aussehen, werden im Folgenden nur die Netzwerkmaße für RRFinal_u berechnet.
+Das Netzwerk hat 346 Knoten und 969 Kanten.
+Die Netzwerkforschung bezeichnet Elemente in einem Netzwerk als sogennante Knoten (Gamper, 2020).
+Die Knoten setzten sich aus den Medien und den Ziffern zusammen.
+Knoten können wiederum mit anderen Elementen Beziehungen -- sogenannte Kanten -- eingehen (Gamper, 2020).
+Die Kanten sind in unserem Fall die Verstöße gegen die Ziffern.
+
+Unter der Dichte versteht man den Grad der Verbundenheit eines Netzwerks, welches sich aus den Verbindungen der einzelnen Akteure untereinander gibt.
+Die maximale Dichte ist bei einem Wert von 1 erreicht.
+Hier ist jeder Knoten im Netzwerk miteinander verbunden.
+Der Wert 0 bedeutet hingegen, dass keine Beziehungen in einem Netzwerk existieren (Gamper, 2020).
+Die Dichte in unserem Netzwerk beträgt 1,6 Prozent von allen möglichen Verbindungen.
+Beim Versuch, die Dichte des simplifizierten Netzwerks zu berechnen stürzt R leider ab.
+
+Im nächsten Schritt wollten wir sehen, welche Knoten am weitesten voneinander entfernt sind.
+Mit dem Befehl farthest_verticles wird der Durchmesser ermittelt, der die größte Distanz zwischen zwei Akteuren angibt (Milakovic, M., Alfarano, S. & Lux, T., 2012).
+Dadurch können Rückschlüsse auf die Größe des Netzwerkes geschlossen werden.
+Man kann sehen, dass 2 von den insgesamt 346 Knoten betroffen sind.
+In unserem Netzwerk ist der längste Weg von der Präambel des Pressekodex, gegen die in unserem Untersuchungszeitraum nur einmal verstoßen wurde, zur Westdeutschen Allgemeinen Zeitung.
+Dieser Weg führt entlang sechs Kanten.
+Da wir die Rügen des Presserats untersucht haben, ist die Anordnung dieser Distanzen klassisch von Medium zu Ziffer zu Medium zu Ziffer, da es keine direkten Verbindungen zwischen den Medien gibt.
+
+Um herauszufinden, wie viele Schritte entlang der Kanten ein Akteur durchschnittlich gehen muss, um zu einem anderen Akteur zu gelangen, berechnen wir die Pfaddistanz (Metz, 2017).
+Mit dem Befehl mean_distance konnten wir ermitteln, dass die durchschnittliche Pfaddistanz 3,206 ist.
+
+```{r Zahlen zu Degrees, fig.height=9, fig.width=16, include=F}
+
+# Degreeberechnung und -anzeige
+
+degreeRR <- degree(RRFinal_d, mode="all")
+
+which.max(degreeRR)
+sort.default(degreeRR, decreasing = TRUE)
+```
+
+Außerdem wollten wir wissen, welche Ziffer den höchsten Degree-Wert hat.
+Dafür haben wir den Code which.max eingegeben.
+Als Ergebnis erhielten wir Ziffer 8 mit insgesamt 298 möglichen Verbindungen.
+Ziffer 7 hat mit 188 Verbindungen den zweithöchsten Degree-Wert im gesamten Netzwerk.
+Den dritthöchsten Degree-Wert hat Ziffer 2 mit 155 möglichen Verbindungen.
+Für eine bessere Übersicht haben wir mit dem Code sort.default den Output verborgen.
+
+## Erste Teilnetzwerke
+
+```{r Teilnetzwerk zu Ziffer 8, Bild ist blau eingefärbt, fig.height=9, fig.width=16, results=F}
+
+# Höchsten Degree-Wert ermitteln
+
+which.max(degreeRR)
+
+# Erstellung des Egonetzwerks
+
+ego8 <- make_ego_graph(RRFinal_u, order = 1, nodes = V(RRFinal_u)$name == "Pressekodex Ziffer 8", mode="all")
+egoz8 <- ego8[[1]]
+
+# Farbgebung
+
+V(egoz8)[V(egoz8)]$color <- "gray80"
+V(egoz8)[V(egoz8)$label == "BildA"]$color <- "deepskyblue4"
+V(egoz8)[V(egoz8)$label == "BildO"]$color <- "deepskyblue4"
+V(egoz8)[V(egoz8)$label == "Bild"]$color <- "deepskyblue4"
+V(egoz8)[V(egoz8)$label == "BildN"]$color <- "deepskyblue4"
+V(egoz8)[V(egoz8)$label == "BildM"]$color <- "deepskyblue4"
+V(egoz8)[V(egoz8)$label == "BildMW"]$color <- "deepskyblue4"
+V(egoz8)[V(egoz8)$label == "BildBR"]$color <- "deepskyblue4"
+V(egoz8)[V(egoz8)$label == "BildD"]$color <- "deepskyblue4"
+V(egoz8)[V(egoz8)$label == "BildH"]$color <- "deepskyblue4"
+V(egoz8)[V(egoz8)$label == "BildHA"]$color <- "deepskyblue4"
+V(egoz8)[V(egoz8)$label == "BildK"]$color <- "deepskyblue4"
+V(egoz8)[V(egoz8)$label == "BildS"]$color <- "deepskyblue4"
+V(egoz8)[V(egoz8)$label == "BildA"]$color <- "deepskyblue4"
+V(egoz8)[V(egoz8)$label == "BildaS"]$color <- "deepskyblue4"
+V(egoz8)[V(egoz8)$label == "BildDE"]$color <- "deepskyblue4"
+V(egoz8)[V(egoz8)$label == "BildF"]$color <- "deepskyblue4"
+E(egoz8)[E(egoz8)$weight == 1]$color <- "lavenderblush4"
+E(egoz8)[E(egoz8)$weight == 2]$color <- "mediumaquamarine"
+E(egoz8)[E(egoz8)]$width <- 4
+
+# Degreeberechnung
+
+centr_degree(egoz8, mode="all", normalized=T)
+inds <- degree(egoz8, mode="in")
+
+plot(egoz8,
+     asp=0,
+     layout=layout_as_star,
+     vertex.size=5,
+     vertex.label.color = "black",
+     main="Ego-Netzwerk Ziffer 8",
+     sub="Gesamtdarstellung ohne Relationen")
+
+# Einzeltäter rauslöschen
+
+degree(egoz8) 
+
+egoz8_2 <- delete.vertices(egoz8, degree(egoz8)<=1)
+
+centr_degree(egoz8_2, mode="all", normalized=T)
+inds <- degree(egoz8_2, mode="in")
+
+# Darstellung mit Einbeziehen der Degreewerte
+
+plot(egoz8_2,
+     asp=0,
+     layout=layout_as_star,
+     vertex.size=inds/3, 
+     vertex.label.color = "black",
+     main="Ego-Netzwerk Ziffer 8 ohne Einzeltäter",
+     sub="Größe der Nodes relativ zum Degree-Wert")
+
+# Darstellung ohne Einbeziehen der Degreewerte
+
+plot(egoz8_2,
+     asp=0,
+     vertex.label.color = "black",
+     layout=layout_as_star,
+     main="Ego-Netzwerk Ziffer 8 ohne Einzeltäter und Degrees",
+     sub="Ohne Einzeltäter, keine Realtionen")
+```
+
+### Ego-Netzwerk aus dem Knoten mit der höchsten Dichte
+
+Wir wollten die Ziffer 8 näher betrachten, da sie den höchsten Degree-Wert hat.
+Zudem wollten wir die Bild hervorheben, da sie die meisten Rügen bekommen und damit die meisten Kontakte hat.
+Zur Veranschaulichung haben wir ein Ego-Netzwerk von Ziffer 8 erstellt und alle regionalen Bildpublikationen in der Farbe deepskyblue4 eingefärbt.
+Aus diesem Ego-Netzwerk haben wir zum Einen die Zentralitätsmaße berechnet.
+Zum anderen haben wir die normalisierten prozentualen Werte der Beziehungen ausgerechnet.
+Dieser beträgt 2.61 Prozent.
+Insgesamt gibt es 12656 mögliche Beziehungen zwischen den Knoten.
+
+#### verfeinern: Ego-Netzwerk der Ziffer 8 ohne Einzeltäter
+
+Denselben Vorgang haben wir ohne Einzeltäter wiederholt.
+Daraus erhielten wir die Dichte von 6,74 Prozent und die Anzahl an 930 möglichen Beziehungen.
+Für eine bessere Übersicht wählten wir das Layout layout_as_star.
+In der ersten Darstellung bezogen wir die Degree-Werte ein.
+Die Knoten mit den höchsten Degree-Werten sind hier farbig und größer dargestellt, je nach ihrem Degree-Wert.
+2013 wurde die Ziffer 8 überarbeitet.
+Dabei standen die Richtlinien für Straftäter- und Opferberichterstattung im Fokus (Deutscher Presserat, 2013).
+Der Presserat entschied sich für getrennte Richtlinien zur Opfer- und Kriminalberichterstattung.
+So soll der Opferschutz gewährleistet werden.
+Im Falle von Kriminalberichterstattung, bei der meist die Täter und Tatverdächtigen im Mittelpunkt stehen, soll das Informationsinteresse und die Persönlichkeitsrechte des Täters gleichrangig sein und vom Journalisten selbst abwägt werden.
+Das Informationsinteresse überwiegt beispielsweise bei außergewöhnlich schweren Straftaten und solchen, die in der Öffentlichkeit stattgefunden haben.
+Gleichzeitig wurde festgelegt, dass die Resozialisierungsinteresse des Täters in der Berichterstattung Priorität haben sollte.
+Außerdem wurde die Berichterstattung über bestimmte Personengruppen wie Familienangehörige, vermisste Personen und Kinder definiert.
+Bis 2013 gab es keine eigenen Richtlinien zur Berichterstattung über Kinder und Jugendliche.
+Dies wurde nun nachgeholt: Kinder unter 18 Jahren dürfen in der Opfer- oder Kriminalberichterstattung nicht identifizierbar sein.
+
+#### verfeinern: Ego-Netzwerk der Ziffer 8 ohne Einzeltäter und Degreees
+
+Danach stellen wir das Ego-Netzwerk dar, ohne die Degree-Werte einzubeziehen.
+Hier färbten wir alle Bildpublikationen in der Farbe deepskyblue ein.
+In diesem Netzwerk wird die Degree-Wert durch die Menge der Kanten sichtbar.
+Außerdem haben wir die öffentlichen und nicht-öffentliche Rügen farblich unterschieden.
+Die grauen Kanten stellen die öffentlichen Rügen dar, die hellblauen die nicht-öffentlichen.
+Dadurch wird sichtbar, dass mehr Rügen öffentlich stattfanden.
+Wir haben die Degree-Werte ausgeschaltet, da sonst die Ziffer 8 sehr groß dargestellt wird.
+
+### Historische Sortierung
+
+Um den Verlauf in den Jahren darzustellen, erstellten wir Teilnetzwerke in Fünf-Jahres-Abschnitten.
+
+```{r Teilnetzwerke Jahre 1990-2019 je fünf Jahre, fig.height=9, fig.width=16}
+
+# Gleichzeitige Darstellung
+
+par(mfrow=c(2,3),mar=c(1,1,1,1))
+
+# Einfärben
+
+V(RRFinal_u)[V(RRFinal_u)$type==0]$color <- "grey80"
+V(RRFinal_u)[V(RRFinal_u)$type==1]$color <- "mediumaquamarine"
+
+# Bereich 1990 - 1994
+
+b1 <- delete.edges(RRFinal_u, E(RRFinal_u)[year >"1994"])
+RRyear1 <- delete.vertices(b1, degree(b1)==0)
+
+RRyear1
+
+plot(RRyear1,
+     asp=0,
+     layout=layout_nicely,
+     edge.curved=.2,
+     edge.curved=curve_multiple(RRyear1), 
+     vertex.label.color = "black",
+     main="Zeitraum 1990 - 1994 (Gesamt)")
+
+# Bereich 1995 - 1999
+
+b2 <- delete.edges(RRFinal_u, E(RRFinal_u)[year <"1995"])
+b2a <- delete.edges(b2, E(b2)[year >"1999"])
+RRyear2 <- delete.vertices(b2a, degree(b2a)==0)
+
+RRyear2
+
+plot(RRyear2,
+     asp=0,
+     layout=layout_nicely,
+     edge.curved=.2,
+     edge.curved=curve_multiple(RRyear2),
+     vertex.label.color = "black",
+     main="Zeitraum 1995 - 1999 (Gesamt)")
+
+# Bereich 2000 - 2004
+
+b3 <- delete.edges(RRFinal_u, E(RRFinal_u)[year <"2000"])
+b3a <- delete.edges(b3, E(b3)[year >"2004"])
+RRyear3 <- delete.vertices(b3a, degree(b3a)==0)
+
+RRyear3
+
+plot(RRyear3,
+     asp=0,
+     layout=layout_nicely,
+     edge.curved=.2,
+     edge.curved=curve_multiple(RRyear3), 
+     vertex.label.color = "black",
+     main="Zeitraum 2000 - 2004 (Gesamt)")
+
+# Bereich 2005 - 2009
+
+b4 <- delete.edges(RRFinal_u, E(RRFinal_u)[year <"2005"])
+b4a <- delete.edges(b4, E(b4)[year >"2009"])
+RRyear4 <- delete.vertices(b4a, degree(b4a)==0)
+
+RRyear4
+
+plot(RRyear4,
+     asp=0,
+     layout=layout_nicely,
+     edge.curved=.2,
+     edge.curved=curve_multiple(RRyear4), 
+     vertex.label.color = "black",
+     main="Zeitraum 2005 - 2009 (Gesamt)")
+
+# Bereich 2010 - 2014
+
+b5 <- delete.edges(RRFinal_u, E(RRFinal_u)[year <"2010"])
+b5a <- delete.edges(b5, E(b5)[year >"2014"])
+RRyear5 <- delete.vertices(b5a, degree(b5a)==0)
+
+RRyear5
+
+plot(RRyear5,
+     asp=0,
+     layout=layout_nicely,
+     edge.curved=.2,
+     edge.curved=curve_multiple(RRyear5), 
+     vertex.label.color = "black",
+     main="Zeitraum 2010 - 2014 (Gesamt)")
+
+# Bereich 2015 - 2019
+
+b6 <- delete.edges(RRFinal_u, E(RRFinal_u)[year <"2015"])
+RRyear6 <- delete.vertices(b6, degree(b6)==0)
+
+RRyear6
+
+plot(RRyear6,
+     asp=0,
+     layout=layout_nicely,
+     edge.curved=.2,
+     edge.curved=curve_multiple(RRyear6), 
+     vertex.label.color = "black",
+     main="Zeitraum 2015 - 2019 (Gesamt)")
+
+```
+
+Im Februar 1990 wurde eine Neufassung des Pressekodex verabschiedet (Deutsche Presserat, 2021).
+Darum bietet sich 1990 als Startjahr unserer Untersuchung an.
+Auch in 1996 und 2001 wurde der Kodex durch eine Neufassung überarbeitet (ebd.).
+Gesamt betrachtet fällt auf, dass die Ziffer 7 immer ein eigenes Teilnetzwerk bildet, also wenig, bis überhaupt nicht mit dem restlichen Netzwerk verbunden ist.
+Mit den Jahren haben sich die Rügen gegen Ziffer 7 vermehrt.
+In den Jahren 2005-2009 wurde besonders häufig gegen die Ziffer 7 gerügt.
+Im Jahr 2015 sprach der Presserat 35 öffentliche Rügen aus.
+Gründe für öffentliche Rügen sind unter anderem sensationsheischende Berichterstattung, mangelnde Sorgfalt oder Diskriminierung.
+Insgesamt gesehen nehmen die Rügen von 2009 bis 2013 zu, denn die Zahl der Beschwerden, die von Leserinnen und Leser beim Presserat eingehen, nahmen in den Jahren ebenfalls kontinuierlich zu.
+Zum Vergleich: 2009 meldeten sich 1.268 Personen beim Presserat.
+Im Jahr 2013 waren es 1.347, im Jahr 2015 stieg die Zahl der Beschwerden auf 2.358 (DPB, 2016).
+
+## Clusterung der historischen Teilnetzwerke mit Walktrap-Algorithmus
+
+```{r Teilnetzwerke Jahre 1990-2019 geclustert, fig.height=9, fig.width=16}
+
+#Gleichzeitige Darstellung
+
+par(mfrow=c(2,3),mar=c(1,1,1,1))
+
+# Bereich 1990 - 1994
+
+RRyear1c <- cluster_walktrap(RRyear1)
+modularity(RRyear1c)
+membership(RRyear1c)
+
+plot(RRyear1c, RRyear1,
+     layout=layout_nicely,
+     edge.curved=.2,
+     edge.curved=curve_multiple(RRyear1), 
+     vertex.label.color = "black",
+     main="Zeitraum 1990 - 1994 (Gesamt, geclustert)")
+
+# Bereich 1995 - 1999
+
+RRyear2c <- cluster_walktrap(RRyear2)
+modularity(RRyear2c)
+membership(RRyear2c)
+
+plot(RRyear2c, RRyear2,
+     layout=layout_nicely,
+     edge.curved=.2,
+     edge.curved=curve_multiple(RRyear2), 
+     vertex.label.color = "black",
+     main="Zeitraum 1995 - 1999 (Gesamt, geclustert)")
+
+# Bereich 2000 - 2004
+
+RRyear3c <- cluster_walktrap(RRyear3)
+modularity(RRyear3c)
+membership(RRyear3c)
+
+plot(RRyear3c, RRyear3,
+     layout=layout_nicely,
+     edge.curved=.2,
+     edge.curved=curve_multiple(RRyear3), 
+     vertex.label.color = "black",
+     main="Zeitraum 2000 - 2004 (Gesamt, geclustert)")
+
+# Bereich 2005 - 2009
+
+RRyear4c <- cluster_walktrap(RRyear4)
+modularity(RRyear4c)
+membership(RRyear4c)
+
+plot(RRyear4c, RRyear4,
+     layout=layout_nicely,
+     edge.curved=.2,
+     edge.curved=curve_multiple(RRyear4),
+     vertex.label.color = "black",
+     main="Zeitraum 2005 - 2009 (Gesamt, geclustert)")
+
+# Bereich 2010 - 2014
+
+RRyear5c <- cluster_walktrap(RRyear5)
+modularity(RRyear5c)
+membership(RRyear5c)
+
+plot(RRyear5c, RRyear5,
+     layout=layout_nicely,
+     edge.curved=.2,
+     edge.curved=curve_multiple(RRyear5), 
+     vertex.label.color = "black",
+     main="Zeitraum 2010 - 2014 (Gesamt, geclustert)")
+
+# Bereich 2015 - 2019
+
+RRyear6c <- cluster_walktrap(RRyear6)
+modularity(RRyear6c)
+membership(RRyear6c)
+
+plot(RRyear6c, RRyear6,
+     layout=layout_nicely,
+     edge.curved=.2,
+     edge.curved=curve_multiple(RRyear1), 
+     vertex.label.color = "black",
+     main="Zeitraum 2015 - 2019 (Gesamt, geclustert)")
+
+```
+
+Wir haben uns für das Cluster-Walktrap-Algorithmus entschieden, um mehrere Netzwerke miteinander zu vergleichen und Aussagen über Gemeinsamkeiten und Unterschiede zu treffen.
+
+Im Jahresvergleich werden einzelne Cluster deutlich, die sich daraus ergeben, dass häufig gegen eine bestimmte Ziffer gerügt wurde.
+Um hier durchzublicken, haben wir das mehrfarbige Walktrap-Alogorithmus auf unsere Teilnetzwerke angewendet und sie in Fünf-Jahres Abschnitte eingeteilt.
+
+Im Zeitraum 1990-1994 wurde am häufigsten gegen die Ziffer 8 (=Schutz der Persönlichkeit) verstoßen.
+Am seltensten wurde gegen die Ziffer 7 (=Trennung von Werbung und Redaktion) verstoßen.
+Es lassen sich auch Überschneidungen sehen, die uns verdeutlichen, dass einzelne Medien im selben Zeitraum gegen mehrere Ziffern verstoßen.
+Die Bild verstößt im selben Zeitraum zum Beispiel gegen die Ziffer 11, Ziffer 8, Ziffer 2 und die Ziffer 9, wodurch sich die Cluster einzeln überlappen.
+
+Im Zeitraum 1995-1999 überwiegt immer noch die Ziffer 8 (=Schutz der Persönlichkeit) als meistgerügte Ziffer.
+Jedoch wurde in diesem Jahr auch oft gegen die Ziffer 2 (=Sorgfalt) verstoßen.
+Das Netzwerk scheint sich auch allgemein in drei Teilnetzwerke zu gliedern.
+So bilden die Ziffer 7 (=Trennung von Werbung und Redaktion) und Ziffer 6 (=Trennung von Tätigkeiten) ein kleines Teilnetzwerk.
+Dies lässt sich damit erklären, dass sich diese Ziffern in ihrer Auffassung sehr ähneln und es somit zu Überschneidungen kommen kann.
+
+Im Zeitraum 2000-2004 liegen die Cluster auf einmal deutlich übereinander und lassen sich kaum noch differenzieren.
+Das erklärt sich daraus, dass die Medien in diesen Jahren gegen mehrere Ziffern gleichzeitig verstoßen haben.
+Ziffer 7 (=Trennung von Werbung und Redaktion) fällt in dieser Visualisierung besonders auf, da sie als einzige Ziffer ein separates Teilnetzwerk bildet.
+
+Im Zeitraum 2005-2009 haben sich die Anzahl an Medien um die Ziffer 7 vermehrt, da in diesem Jahr am häufigsten gegen die Ziffer 7 gerügt wurde und sich damit ein großes Teilnetzwerk gebildet hat.
+Die enge Clusterung scheint sich in diesem Jahr wieder etwas zu lockern.
+So bildet zum Beispiel die Ziffer 12 (=Diskriminierungen) ebenfalls ein kleines Teilnetzwerk.
+
+Im Zeitraum 2010-2014 sind noch weniger Cluster vorhanden.
+Während in diesem Teilnetzwerk nur fünf Cluster zu sehen sind, sind in den übrigen ca.
+neun zu sehen.
+Daraus lässt sich schließen, dass in diesem Zeitraum Publikationen einzeln gegen mehrere Ziffern verstoßen haben.
+Außerdem ist in diesem Jahr die Ziffer 1 (=Wahrhaftigkeit und Achtung der Menschenwürde) die am häufigsten gerügte Ziffer.
+
+Im Zeitraum 2015-2019 scheinen sich die Cluster wieder einzeln zu überlappen und zu vermehren.
+Entgegen unserer Erwartung bildet in diesem Jahr nicht die Ziffer 7 ein separates Teilnetzwerk, sondern die Ziffern 12 (=Diskriminierung) und 9 (=Schutz der Ehre).
+
+## Simple Datenerhebung (2)
+
+```{r Teilnetzwerke Jahre 1990-2019 Dichte und Durchmesser, fig.height=9, fig.width=16}
+
+# Die Dichte
+
+edge_density(RRyear1)
+edge_density(RRyear2)
+edge_density(RRyear3)
+edge_density(RRyear4)
+edge_density(RRyear5)
+edge_density(RRyear6)
+
+```
+
+Um die beobachteten Veränderungen zu überprüfen, vergleichen wir die Netzwerkmaße der jeweiligen Jahresabschnitte.
+Da es viele Knoten gibt, die durch mehrere Kanten verbunden sind (weil ein Medium mehrmals gegen dieselbe Ziffer verstoßen hat), sind diese Werte verfälscht, daher muss man stattdessen mit den simplifizierten Netzwerken arbeiten.
+
+```{r Teilnetzwerke Jahre 1990-2019 Dichte und Durchmesser simplifiziert, fig.height=9, fig.width=16}
+
+# Netzwerke simplifizieren
+
+is_simple(RRyear1)
+is_simple(RRyear2)
+is_simple(RRyear3)
+is_simple(RRyear4)
+is_simple(RRyear5)
+is_simple(RRyear6)
+
+#ergibt immer false - die Netzwerke können also simplifiziert werden
+
+# geplant war:
+
+#simpleRRyear1 <- simplify(RRyear1, remove.multiple = TRUE, remove.loops = TRUE)
+#...
+
+#edge_density(simpleRRyear1)
+#...
+
+#aber R stürzt bei simplify ab
+#ausprobiert wurde auch:
+
+#simpleRRyear1 <- simplify(RRyear1, remove.multiple = TRUE, remove.loops = TRUE, edge.attr.comb = igraph_opt("edge.attr.comb"))
+
+#und:
+#simplify(
+  #RRyear1,
+ #remove.multiple = TRUE,
+  #remove.loops = TRUE,
+ #edge.attr.comb = igraph_opt("edge.attr.comb"))
+
+```
+
+Unser Plan war es, das Netzwerk zu simplifizieren.
+Da der Befehl is_simple() immer False angibt, müsste es möglich sein, das Netzwerk zu simplifizieren.
+Durch die oben stehenden Codes hätte es theoretisch klappen müssen.
+Allerdings hat der Befehl nicht funktioniert.
+
+Im nächsten Schritt wollten wir sehen, welche Knoten in den jeweiligen Fünf-Jahres-Abschnitten am weitesten voneinander entfernt ist.
+
+```{r Durchmesser Jahresnetzwerke, fig.height=9, fig.width=16}
+
+# Welche Knoten sind in den jeweiligen Jahresnetzwerken am weitesten voneinander entfernt?
+
+farthest_vertices(RRyear1)
+get_diameter(RRyear1)
+farthest_vertices(RRyear2)
+get_diameter(RRyear2)
+farthest_vertices(RRyear3)
+get_diameter(RRyear3)
+farthest_vertices(RRyear4)
+get_diameter(RRyear4)
+farthest_vertices(RRyear5)
+get_diameter(RRyear5)
+farthest_vertices(RRyear6)
+get_diameter(RRyear6)
+
+```
+
+Wir wollten erfahren, welche Knoten in den Fünf-Jahres-Abschnitten am weitesten voneinander entfertn sind.
+Dafür benutzen wir wieder die Befehle farthest_vertices und get_diameter, um den Durchmesser zu ermitteln.
+In den Jahren 1990-1994 ist die Ziffer 5 mit einem Durchmesser von 8 am weitesten entfernt von der Dill-Post.
+Im Zeitraum 1995-1999 ist die Abendzeitung am weitesten entfernt vom Magazin City Express.
+Zwischen ihnen befinden sich 4 Ziffern und 3 Medienhäuser.
+Im Zeitraum 2000-2004 ist die Butzbacher Zeitung über 5 Knoten mit dem Wirtschafstforum verbunden.
+In den Jahren 2005-2009 ist die Präambel über 5 Knoten mit der Ziffer 5 verbunden.
+Im Zeitraum 2010-2014 ist die Ziffer 13 über 2 Medienhäuser und 2 Ziffern mit der Schifffahrt Hafen Bahn und Technik verbunden.
+Im Zeitraum 2015-2019 ist die Ziffer 13 über 5 Knoten mit der Volksstimme und der Volkstimme Online verbunden, darunter auch über die Bild.
+Insgesamt liegt der Durchmesse allgemein zwischen den Werten 5 bis 9.
+Diese Ergebnisse lassen darauf schließen, dass wenn der Durchmesser besonders hoch ist, das Netzwerk groß ist.
+Daraus könnte man schließen, dass in diesen Zeiträumen gegen viele unterschiedliche Ziffern verstoßen wurde.
+Wenn der Durchmesser niedriger ist, könnte das bedeuten, dass einzelne Medien gleichzeitig gegen unterschiedliche Ziffern verstoßen haben.
+Allerdings lässt sich diese Theorie nicht vollständig in unserer Untersuchung bestätigen.
+
+### Anzahl der Rügen pro Jahr
+
+```{r Anzahl Edges/Rügen pro Jahr, include=F}
+# für jedes Jahr Ego-Netzwerk erstellen, um Anzahl der Rügen der jeweiligen Jahre zu sehen
+j1 <- delete.edges(RRFinal_u, E(RRFinal_u)[year > 1990])
+j1
+
+j2 <- delete.edges(RRFinal_u, E(RRFinal_u)[year <1991])
+j2a <- delete.edges(j2, E(j2)[year >"1991"])
+j2a
+
+j3 <- delete.edges(RRFinal_u, E(RRFinal_u)[year <1992])
+j3a <- delete.edges(j3, E(j3)[year >"1992"])
+j3a
+
+j4 <- delete.edges(RRFinal_u, E(RRFinal_u)[year <1993])
+j4a <- delete.edges(j4, E(j4)[year >"1993"])
+j4a
+
+j5 <- delete.edges(RRFinal_u, E(RRFinal_u)[year <1994])
+j5a <- delete.edges(j5, E(j5)[year >"1994"])
+j5a
+
+j6 <- delete.edges(RRFinal_u, E(RRFinal_u)[year <1995])
+j6a <- delete.edges(j6, E(j6)[year >"1995"])
+j6a
+
+
+j7 <- delete.edges(RRFinal_u, E(RRFinal_u)[year <1996])
+j7a <- delete.edges(j7, E(j7)[year >"1996"])
+j7a
+
+j8 <- delete.edges(RRFinal_u, E(RRFinal_u)[year <1997])
+j8a <- delete.edges(j8, E(j8)[year >"1997"])
+j8a
+
+j9 <- delete.edges(RRFinal_u, E(RRFinal_u)[year <1998])
+j9a <- delete.edges(j9, E(j9)[year >"1998"])
+j9a
+
+j10 <- delete.edges(RRFinal_u, E(RRFinal_u)[year <1999])
+j10a <- delete.edges(j10, E(j10)[year >"1999"])
+j10a
+
+j11 <- delete.edges(RRFinal_u, E(RRFinal_u)[year <2000])
+j11a <- delete.edges(j11, E(j11)[year >"2000"])
+j11a
+
+j12 <- delete.edges(RRFinal_u, E(RRFinal_u)[year <2001])
+j12a <- delete.edges(j12, E(j12)[year >"2001"])
+j12a
+
+j13 <- delete.edges(RRFinal_u, E(RRFinal_u)[year <2002])
+j13a <- delete.edges(j13, E(j13)[year >"2002"])
+j13a
+
+j14 <- delete.edges(RRFinal_u, E(RRFinal_u)[year <2003])
+j14a <- delete.edges(j14, E(j14)[year >"2003"])
+j14a
+
+j15 <- delete.edges(RRFinal_u, E(RRFinal_u)[year <2004])
+j15a <- delete.edges(j15, E(j15)[year >"2004"])
+j15a
+
+j16 <- delete.edges(RRFinal_u, E(RRFinal_u)[year <2005])
+j16a <- delete.edges(j16, E(j16)[year >"2005"])
+j16a
+
+j17 <- delete.edges(RRFinal_u, E(RRFinal_u)[year <2006])
+j17a <- delete.edges(j17, E(j17)[year >"2006"])
+j17a
+
+j18 <- delete.edges(RRFinal_u, E(RRFinal_u)[year <2007])
+j18a <- delete.edges(j18, E(j18)[year >"2007"])
+j18a
+
+j19 <- delete.edges(RRFinal_u, E(RRFinal_u)[year <2008])
+j19a <- delete.edges(j19, E(j19)[year >"2008"])
+j19a
+
+j20 <- delete.edges(RRFinal_u, E(RRFinal_u)[year <2009])
+j20a <- delete.edges(j20, E(j20)[year >"2009"])
+j20a
+
+j21 <- delete.edges(RRFinal_u, E(RRFinal_u)[year <2010])
+j21a <- delete.edges(j21, E(j21)[year >"2010"])
+j21a
+
+j22 <- delete.edges(RRFinal_u, E(RRFinal_u)[year <2011])
+j22a <- delete.edges(j22, E(j22)[year >"2011"])
+j22a
+
+j23 <- delete.edges(RRFinal_u, E(RRFinal_u)[year <2012])
+j23a <- delete.edges(j23, E(j23)[year >"2012"])
+j23a
+
+j24 <- delete.edges(RRFinal_u, E(RRFinal_u)[year <2013])
+j24a <- delete.edges(j24, E(j24)[year >"2013"])
+j24a
+
+j25 <- delete.edges(RRFinal_u, E(RRFinal_u)[year <2014])
+j25a <- delete.edges(j25, E(j25)[year >"2014"])
+j25a
+
+j26 <- delete.edges(RRFinal_u, E(RRFinal_u)[year <2015])
+j26a <- delete.edges(j26, E(j26)[year >"2015"])
+j26a
+
+j27 <- delete.edges(RRFinal_u, E(RRFinal_u)[year <2016])
+j27a <- delete.edges(j27, E(j27)[year >"2016"])
+j27a
+
+j28 <- delete.edges(RRFinal_u, E(RRFinal_u)[year <2017])
+j28a <- delete.edges(j28, E(j28)[year >"2017"])
+j28a
+
+j29 <- delete.edges(RRFinal_u, E(RRFinal_u)[year <2018])
+j29a <- delete.edges(j29, E(j29)[year >"2018"])
+j29a
+
+j30 <- delete.edges(RRFinal_u, E(RRFinal_u)[year <2019])
+j30
+```
+
+![](https://raw.githubusercontent.com/Artsky0/Ruegen-Ranger/main/The%2520Main%2520Thing/Bilder_Statistiken/Bilder/Anzahl%2520R%25C3%25BCgen%2520nach%2520Jahren%2520mit%2520Werten%2520am%2520Graph.png)
+
+Im Jahr 2001 wurde am meisten gerügt, insgesamt 78 Mal.
+Das Jahr mit der niedrigsten Anzahl der Rügen ist 1998.
+In 2001 verbuchten die 100 größten Medienunternehmen ein Umsatzplus von knapp fünf Prozent im Vergleich zum Vorjahr (Manager Magazin, 2021).
+Zu den Top 10 gehören nach Bertelsmann (RTL Group) und der Kirch-Gruppe (ProSiebenSat.1) auch der Axel Springer-Verlag (Bild, B.Z.), Hubert Burda Media (Bunte, Freizeit Revue) und die Bauer Media Group (Das neue Blatt, Bravo) (Horizont, 2001).
+Einige der Medien dieser Verlagshäuser sind schon häufiger vom Presserat gerügt worden.
+Es könnte sein, dass 2001 so viele Rügen ausgesprochen wurden, weil mehr Menschen die Zeitungen kauften und dementsprechend mehr Beschwerden beim Presserat eingingen.
+Andererseits erhöhte sich der Umsatz vielleicht durch reißerische oder skandalöse Berichterstattung, die nicht mit dem Pressekodex vereinbar war.
+Jedoch ist anzumerken, dass in dieses Umsatzplus auch die Telemedien miteinbezogen sind.
+Zudem fällt auf, dass die Anzahl der Rügen nicht konstant ansteigen, sondern immer wieder zu- und abnehmen.
+
+# Analyse der Ziffern
+
+### Ego-Netzwerk Ziffer 8
+
+Wie oben bereits erwähnt, wollten wir wissen, welche Ziffer den höchsten Degree-Wert hat.
+Als Ergebnis erhielten wir Ziffer 8 mit insgesamt 298 möglichen Verbindungen.
+Wir erstellten ein Egonetzwerk der Ziffer 8, in dem wir durch "order=2" auch alle indirekten Beziehungen mit einbeziehen konnten.
+Zur besseren Darstellung wurden alle Einzeltäter herausgelöscht.
+
+```{r Ego-Netzwerk Ziffer 8, fig.height=9, fig.width=16}
+
+# Ziffer 8 als meist gerügte Ziffer
+
+ego8 <- make_ego_graph(RRFinal_u, order = 2, nodes = V(RRFinal_u)$name == "Pressekodex Ziffer 8", mode="all")
+ego8 <- ego8[[1]]
+
+plot(ego8,
+     asp=0,
+     vertex.size=2,
+     vertex.label.color = "black",
+     main="Ego-Netzwerk Ziffer 8",
+     sub="Order = 2")
+
+# Einzeltäter rauslöschen
+
+ego8simple <- delete.vertices(ego8, degree(ego8)<=1)
+
+plot(ego8simple,
+     asp=0,
+     vertex.size=4,
+     vertex.label.color = "black",
+     layout = layout_nicely(ego8simple),
+     main="Ego-Netzwerk Ziffer 8",
+     sub="Ohne Einzeltäter")
+```
+
+In der Darstellung fällt auf, dass besonders Ziffer 13 (=Unschuldsvermutung) viele gemeinsame Kanten mit der Ziffer 8 (=Schutz der Persönlichkeit) aufweist.
+Das bedeutet dass oft gleichzeitig gegen beide Ziffern verstoßen wurde.
+Außerdem fällt auf, dass Bild und Bild Online nahe bei den Ziffern 8 und 13 liegen und sehr viele Kanten zu ihnen ausweist.
+Außerdem liegen Ziffer 1 (=Wahrhaftigkeit und Achtung der Menschenwürde), 2 (=Sorgfalt) und 11 (=Sensationsberichterstattung und Opferschutz) im engeren umkreis von der Ziffer 8.
+Die Ziffer 3 (=Richtigstellung) liegt am weitesten außerhalb des Ego-Netzwerks, sie ist nur durch zwei Kanten (Münchner Merkur und Volksstimme Magdeburg) verbunden.
+
+### Historische Sortierung Ziffer 8
+
+```{r Ego-Netzwerk Ziffer 8 im Zeitverlauf, fig.height=9, fig.width=16}
+
+# für mehr Übersichtlichkeit teilen wir Ziffer 8 in unsere 5-Jahres-Abschnitte auf
+
+par(mfrow=c(2,3),mar=c(1,1,1,1))
+
+#bspw für 1990 bis 1994 also RRyear1
+
+ego8year1 <- make_ego_graph(RRyear1, order = 2, nodes = V(RRFinal_u)$name == "Pressekodex Ziffer 8", mode="all")
+ego8year1 <- ego8year1[[1]]
+
+plot(ego8year1,
+     asp=0,
+     vertex.size=10,
+     vertex.label.color = "black",
+     main="Ego-Netzwerk Ziffer 8 - 1990 bis 1994")
+
+# 1995 bis 1999 also RRyear2
+
+ego8year2 <- make_ego_graph(RRyear2, order = 2, nodes = V(RRFinal_u)$name == "Pressekodex Ziffer 8", mode="all")
+ego8year2 <- ego8year2[[1]]
+
+plot(ego8year2,
+     asp=0,
+     vertex.size=10,
+     vertex.label.color = "black",
+     main="Ego-Netzwerk Ziffer 8 - 1995 bis 1999")
+
+# 2000 bis 2004 also RRyear3
+
+ego8year3 <- make_ego_graph(RRyear3, order = 2, nodes = V(RRFinal_u)$name == "Pressekodex Ziffer 8", mode="all")
+ego8year3 <- ego8year3[[1]]
+
+plot(ego8year3,
+     asp=0,
+     vertex.size=10,
+     vertex.label.color = "black",
+     main="Ego-Netzwerk Ziffer 8 - 2000 bis 2004")
+
+# 2005 bis 2009 also RRyear4
+
+ego8year4 <- make_ego_graph(RRyear4, order = 2, nodes = V(RRFinal_u)$name == "Pressekodex Ziffer 8", mode="all")
+ego8year4 <- ego8year4[[1]]
+
+plot(ego8year4,
+     asp=0,
+     vertex.size=10,
+     vertex.label.color = "black",
+     main="Ego-Netzwerk Ziffer 8 - 2005 bis 2009")
+
+# 2010 bis 2014 also RRyear5
+
+ego8year5 <- make_ego_graph(RRyear5, order = 2, nodes = V(RRFinal_u)$name == "Pressekodex Ziffer 8", mode="all")
+ego8year5 <- ego8year5[[1]]
+
+plot(ego8year5,
+     asp=0,
+     vertex.size=10,
+     vertex.label.color = "black",
+     main="Ego-Netzwerk Ziffer 8 - 2010 bis 2014")
+
+# 2015 bis 2019 also RRyear6
+
+ego8year6 <- make_ego_graph(RRyear6, order = 2, nodes = V(RRFinal_u)$name == "Pressekodex Ziffer 8", mode="all")
+ego8year6 <- ego8year6[[1]]
+
+plot(ego8year6,
+     asp=0,
+     vertex.size=10,
+     vertex.label.color = "black",
+     main="Ego-Netzwerk Ziffer 8 - 2015 bis 2019")
+```
+
+Um den Verlauf der Ziffer 8 darzustellen, haben wir Teilnetzwerke erstellt.
+In Fünf-Jahres Abschnitte können wir nun sehen, dass die Ziffer 8 oft in den Jahren 1990 bis 1994 und 1995 bis 1999 gerügt wurde.
+Auch hier kann man sehen, dass Ziffer 8 Oft eng mit der Ziffer 13 verbunden ist.
+Außerdem ist die Ziffer 8 (=Schutz der Persönlichkeit) in diesen Jahren immer in einem hohen Maße mit der Bild verbunden.
+Dies lässt sich zum einen damit erklären, dass die Bild aufgrund ihrer Stellung als Boulevardmedium auch eine gewisse Sensationsgier aufweist und somit oft über die Grenzen der privaten Berichterstattung geht.
+
+### Ziffer 7 als zweitmeist gerügte Ziffer
+
+Da die Ziffer 7 die Ziffer ist, gegen die am zweitmeisten verstoßen wurde, wollten wir sie näher betrachten.
+
+```{r Ego-Netzwerk Ziffer 7, fig.height=9, fig.width=16}
+
+# Ziffer 7 als zweitmeist gerügte Ziffer (Degree-Wert 188)
+
+sort.default(degreeRR, decreasing = TRUE)
+
+ego7 <- make_ego_graph(RRFinal_u, order = 1, nodes = V(RRFinal_u)$name == "Pressekodex Ziffer 7", mode="all")
+ego7 <- ego7[[1]]
+
+plot(ego7,
+     asp=0,
+     vertex.size=2,
+     vertex.label.color = "black",
+     main="Ego-Netzwerk Ziffer 7")
+```
+
+In der Darstellung fällt auf dass sich ein inneres Netzwerk als eine Art Stern gebildet hat.
+Das sind die Mehrfachtäter in diesem Netzwerk.
+Die einzelnen Striche nach außen sind Einzeltäter, also Medien, die nur einmal gegen die Ziffer 7 verstoßen.
+
+```{r Ego-Netzwerk Ziffer 7 Vergleich Einzel- und Mehrfachtäter, fig.height=9, fig.width=16}
+
+# Einzeltäter rauslöschen
+
+ego7simple <- delete.vertices(ego7, degree(ego7)<=1)
+
+# gleichzeitige Darstellung
+
+par(mfrow=c(1,2),mar=c(1,1,1,1))
+
+plot(ego7,
+     asp=0,
+     vertex.size=2,
+     vertex.label.color = "black",
+     main="Ego-Netzwerk Ziffer 7",
+     sub="Order = 1")
+
+plot(ego7simple,
+     asp=0,
+     vertex.size=4,
+     vertex.label.color = "black",
+     main= "Ego-Netzwerk Ziffer 7",
+     sub="Order = 1 ohne Einzeltäter")
+
+
+```
+
+Um dies noch einmal zu belegen und verdeutlichen, haben wir die Einzeltäter aus der Darstellung gelöscht, und beide Darstellungen nebeneinander platziert.
+In der Darstellung ohne Einzeltäter, werden die Medien hervorgehoben, die besonders oft gegen die Ziffer 7 verstoßen haben.
+Tatsächlich war die Bild nicht unter den Mehrfachtätern.
+Dagegen gehört Focus Online zu den Medienhäuser, die besonders oft gegen die Ziffer 7 verstoßen haben.
+
+```{r Ego-Netzwerk Ziffer 7 mit indirekten Verbindungen, fig.height=9, fig.width=16}
+
+# Ego-Netzwerk Ziffer 7 mit indirekten Verbindungen
+
+ego7o2 <- make_ego_graph(RRFinal_u, order = 2, nodes = V(RRFinal_u)$name == "Pressekodex Ziffer 7", mode="all")
+ego7o2 <- ego7o2[[1]]
+
+plot(ego7o2,
+     asp=0,
+     vertex.size=4,
+     vertex.label.color = "black",
+     main="Ego-Netzwerk Ziffer 7 Order = 2")
+
+# Einzeltäter rauslöschen
+
+ego7o2simple <- delete.vertices(ego7o2, degree(ego7o2)<=1)
+
+plot(ego7o2simple,
+     asp=0,
+     vertex.size=4,
+     vertex.label.color = "black",
+     layout = layout_nicely(ego7o2),
+     main="Ego-Netzwerk Ziffer 7",
+     sub="Order = 2 ohne Einzeltäter")
+
+
+
+```
+
+Als nächstes haben wir das Ego-Netzwerk der Ziffer 7 mit allen indirekten Verbindungen dargestellt.
+In diesem Netzwerk ist kaum etwas zu lesen.
+Daher haben wir im Anschluss wieder ein Egonetzwerk erstellt mit "order=2" und die Einzeltäter rausgelöscht.
+In der Darstellung fällt auf, dass Ziffer 7 ein eigenes Teilnetzwerk bildet und von den anderen Ziffern abgegrenzt ist.
+Ziffer 1 und 12 sind dabei am engsten mit Ziffer 7 verbunden, Ziffer 14 am weitesten entfernt.
+Obwohl die Ziffer 7 eine der meist gerügten Ziffern ist, sind die Kanten im Ego-Netzwerk der Ziffer 7 eher dünn, da es wenige Verbindungen zu anderen Ziffern gibt.
+Um diese Vermutung zu bestätigen, wenden wir den Cluster-Befehl an:
+
+### Clusterung Ziffer 7
+
+```{r Ego-Netzwerk Ziffer 7 geclustert, fig.height=9, fig.width=16}
+
+# Clusterung mit Einzeltätern
+
+ego7cluster <- cluster_walktrap(ego7o2)
+modularity(ego7cluster)
+membership(ego7cluster)
+
+plot(ego7cluster, ego7o2,
+     layout=layout_nicely,
+     edge.curved=.2,
+     vertex.label.color = "black",
+     main="Clusterung Ziffer 7")
+
+# Clusterung ohne Einzeltäter
+
+ego7clustersimple <- cluster_walktrap(ego7o2simple)
+modularity(ego7cluster)
+membership(ego7cluster)
+
+plot(ego7clustersimple, ego7o2simple,
+     layout=layout_nicely,
+     edge.curved=.2,
+     vertex.label.color = "black",
+     main="Clusterung Ziffer 7",
+     sub="Ohne Einzeltäter")
+
+```
+
+Im Clusternetzwerk wird unsere Vermutung bestätigt.
+Die Ziffer 7 bildet einen großen Cluster, da viele Medien gegen die Ziffer gerügt wurden.
+Jedoch ist die Ziffer 7, anders als die Ziffer 13 kaum mit anderen Ziffern verbunden und bildet somit einen seperaten Cluster (Hier in blau gekennzeichnet).
+Im zweiten Cluster sind dagegen die Ziffer 4,5,9,10,12,13 und 14 allesamt miteinander verbunden.
+Das erklärt auch warum ihre Kanten in der vorherigen Darstellung dick gefärbt waren.
+
+```{r Ego-Netzwerk Ziffer 7 im Zeitverlauf, fig.height=9, fig.width=16}
+
+# für mehr Übersichtlichkeit teilen wir Ziffer 7 in unsere 5-Jahres-Abschnitte auf
+
+par(mfrow=c(2,3),mar=c(1,1,1,1))
+
+#bspw für 1990 bis 1994 also RRyear1
+
+ego7year1 <- make_ego_graph(RRyear1, order = 2, nodes = V(RRFinal_u)$name == "Pressekodex Ziffer 4", mode="all")
+ego7year1 <- ego7year1[[1]]
+
+plot(ego7year1,
+     asp=0,
+     vertex.size=10,
+     vertex.label.color = "black",
+     main="Ego-Netzwerk Ziffer 7 - 1990 bis 1994")
+
+# warum nimmt er hier Ziffer 10? Bug: immer um drei verschoben
+# deshalb geben wir Ziffer 4 ein, um Ziffer 7 zu erhalten
+
+# 1995 bis 1999 also RRyear2
+
+
+ego7year2 <- make_ego_graph(RRyear2, order = 2, nodes = V(RRFinal_u)$name == "Pressekodex Ziffer 4", mode="all")
+ego7year2 <- ego7year2[[1]]
+
+plot(ego7year2,
+     asp=0,
+     vertex.size=10,
+     vertex.label.color = "black",
+     main="Ego-Netzwerk Ziffer 7 - 1995 bis 1999")
+
+# 2000 bis 2004 also RRyear3
+
+ego7year3 <- make_ego_graph(RRyear3, order = 2, nodes = V(RRFinal_u)$name == "Pressekodex Ziffer 5", mode="all")
+ego7year3 <- ego7year3[[1]]
+
+plot(ego7year3,
+     asp=0,
+     vertex.size=10,
+     vertex.label.color = "black",
+     main="Ego-Netzwerk Ziffer 7 - 2000 bis 2004")
+
+#hier nimmt er statt Ziffer 4 Ziffer 6, also um zwei versetzt also geben wir für Ziffer 7 die Ziffer 5 ein
+
+# 2005 bis 2009 also RRyear4
+
+ego7year4 <- make_ego_graph(RRyear4, order = 2, nodes = V(RRFinal_u)$name == "Pressekodex Ziffer 6", mode="all")
+ego7year4 <- ego7year4[[1]]
+
+plot(ego7year4,
+     asp=0,
+     vertex.size=10,
+     vertex.label.color = "black",
+     main="Ego-Netzwerk Ziffer 7 - 2005 bis 2009")
+
+#hier nimmt er statt Ziffer 4 Ziffer 5, also um eins versetzt also geben wir für Ziffer 7 die Ziffer 6 ein
+
+
+# 2010 bis 2014 also RRyear5
+
+ego7year5 <- make_ego_graph(RRyear5, order = 2, nodes = V(RRFinal_u)$name == "Pressekodex Ziffer 2", mode="all")
+ego7year5 <- ego7year5[[1]]
+
+plot(ego7year5,
+     asp=0,
+     vertex.size=10,
+     vertex.label.color = "black",
+     main="Ego-Netzwerk Ziffer 7 - 2010 bis 2014")
+
+#hier nimmt er statt Ziffer 4 Ziffer 9, also um 5 versetzt also geben wir für Ziffer 7 die Ziffer 2 ein
+
+# 2015 bis 2019 also RRyear6
+
+ego7year6 <- make_ego_graph(RRyear6, order = 2, nodes = V(RRFinal_u)$name == "Pressekodex Ziffer 3", mode="all")
+ego7year6 <- ego7year6[[1]]
+
+plot(ego7year6,
+     asp=0,
+     vertex.size=10,
+     vertex.label.color = "black",
+     main="Ego-Netzwerk Ziffer 7 - 2015 bis 2019")
+
+# hier geben wir wieder 3 ein, um 7 zu erhalten
+
+```
+
+Für eine bessere Übersichtlichkeit haben wie uns entschieden, die zeitlichen Entwicklungen der Ziffer 7 noch einmal seperat in einzelnen Abschnitten darzustellen.
+Damit wir die Ego-Netzwerke von Ziffer 7 erhalten, mussten wir aufgrund eines Programmfehlers von R die Ziffern jeweils versetzt einsetzen.
+Im Jahr 2015 bis 2019 zum Beispiel mussten wir die Ziffer 4 eingeben, um ein Netzwerk der Ziffer 7 zu erhalten.
+Herausgefunden haben wir das, indem wir im Befehl make ego graph die order auf 1 gestellt haben.
+Dann bleibt nur noch eine Ziffer bestehen, diese haben wir dann mit der Ziffer im Code bei name verglichen und verbessert.
+Insgesamt betrachtet haben sich die Anzahl der Rügen im Zeitverlauf von 1990-2005 um weiten gesteigert.
+
+## Arbeit mit Node-Attributen
+
+### region
+
+```{r Gesamtnetzwerk eingefärbt nach regionalen und überregionalen gerügten Medien, fig.height=9, fig.width=16}
+
+# Einfärben der reginalen (grün) und überregionalen (türkis) Medien 
+
+V(RRFinal_u)[V(RRFinal_u)$region==3]$color <- "grey80"
+V(RRFinal_u)[V(RRFinal_u)$region==0]$color <- "mediumaquamarine"
+V(RRFinal_u)[V(RRFinal_u)$region==1]$color <- "mediumseagreen"
+
+plot(RRFinal_u,
+   layout=layout_nicely,
+   vertex.label.color = "black",
+   main="regionale vs. überregionale Medien",
+   sub="Gesamtnetzwerk")
+     
+```
+
+Wir wollten die Anzahl der regionalen und überregionalen Medien veranschaulichen.
+Dafür färbten wir die regionalen Medien grün ein und die überregionalen türkis.
+Auf dem ersten Blick sehen die Medien ausgeglichen aus.
+Nach einer genauen Berechnung gibt es insgesamt etwas mehr regionale (=172) als überregionale (=158) Medien.
+
+```{r Zeitverlauf regional und überregional, echo=FALSE, fig.height=9, fig.width=16}
+
+# Gleichzeitige Darstellung
+
+par(mfrow=c(2,3))
+
+# Bereich 1990 - 1994 jeweils überregional (0) in grün, regional in türkis (1) und Ziffern in grau (3) 
+
+V(RRyear1)[V(RRyear1)$region==3]$color <- "grey80"
+V(RRyear1)[V(RRyear1)$region==0]$color <- "mediumseagreen"
+V(RRyear1)[V(RRyear1)$region==1]$color <- "mediumaquamarine"
+
+plot(RRyear1,
+    layout=layout_nicely,
+     edge.curved=.2,
+     edge.curved=curve_multiple(RRyear1),
+     vertex.label.cex=c(0.3),
+     vertex.label.color = "black",
+     main="Zeitraum 1990 - 1994 (Gesamt, regional/überregional)") 
+
+# Bereich 1995 - 1999
+
+V(RRyear2)[V(RRyear2)$region==3]$color <- "grey80"
+V(RRyear2)[V(RRyear2)$region==0]$color <- "mediumseagreen"
+V(RRyear2)[V(RRyear2)$region==1]$color <- "mediumaquamarine"
+
+plot(RRyear2,
+    layout=layout_nicely,
+     edge.curved=.2,
+     edge.curved=curve_multiple(RRyear2),
+     vertex.label.cex=c(0.3),
+     vertex.label.color = "black",
+     main="Zeitraum 1995 - 1999") 
+
+# Bereich 2000 - 2004
+
+V(RRyear3)[V(RRyear3)$region==3]$color <- "grey80"
+V(RRyear3)[V(RRyear3)$region==0]$color <- "mediumseagreen"
+V(RRyear3)[V(RRyear3)$region==1]$color <- "mediumaquamarine"
+
+plot(RRyear3,
+    layout=layout_nicely,
+     edge.curved=.2,
+     edge.curved=curve_multiple(RRyear3),
+     vertex.label.cex=c(0.3),
+     vertex.label.color = "black",
+     main="Zeitraum 2000 - 2004 (Gesamt, regional/überregional)") 
+
+# Bereich 2005 - 2009
+
+V(RRyear4)[V(RRyear4)$region==3]$color <- "grey80"
+V(RRyear4)[V(RRyear4)$region==0]$color <- "mediumseagreen"
+V(RRyear4)[V(RRyear4)$region==1]$color <- "mediumaquamarine"
+
+plot(RRyear4,
+    layout=layout_nicely,
+     edge.curved=.2,
+     edge.curved=curve_multiple(RRyear4),
+     vertex.label.cex=c(0.3),
+     vertex.label.color = "black",
+     main="Zeitraum 2005 - 2009 (Gesamt, regional/überregional)") 
+
+# Bereich 2010 - 2014
+
+V(RRyear5)[V(RRyear5)$region==3]$color <- "grey80"
+V(RRyear5)[V(RRyear5)$region==0]$color <- "mediumseagreen"
+V(RRyear5)[V(RRyear5)$region==1]$color <- "mediumaquamarine"
+
+plot(RRyear5,
+    layout=layout_nicely,
+     edge.curved=.2,
+     edge.curved=curve_multiple(RRyear5),
+     vertex.label.cex=c(0.3),
+     vertex.label.color = "black",
+     main="Zeitraum 2010 - 2014 (Gesamt, regional/überregional)") 
+
+# Bereich 2015 - 2019
+
+V(RRyear6)[V(RRyear6)$region==3]$color <- "grey80"
+V(RRyear6)[V(RRyear6)$region==0]$color <- "mediumseagreen"
+V(RRyear6)[V(RRyear6)$region==1]$color <- "mediumaquamarine"
+
+plot(RRyear6,
+     layout=layout_nicely,
+     edge.curved=.2,
+     edge.curved=curve_multiple(RRyear6),
+     vertex.label.cex=c(0.3),
+     vertex.label.color = "black",
+     main="Zeitraum 2015 - 2019 (Gesamt, regional/überregional)") 
+
+```
+
+#### Zeitverlauf regional und überregional
+
+Auch hier haben wir uns für eine gleichzeitige Darstellung entschieden.
+Die überregionalen Medien sind in grün zu sehen, die regionalen in blau.
+Im Teilnetzwerk um die Ziffer 7 ist zu sehen, dass überwiegend überregionale medien dagegen verstoßen wurden, aber nicht ausschließlich.
+Zwischen 2000 und 2004 ist ein deutlicher anstieg an regionalen Rügen zu erkennen.
+Auch die Zahl der Rügen stieg 2019 auf 34.
+2018 waren es 28 Rügen und 2017 noch 21.
+Der Grund für die meisten Rügen (14) war laut Presserat eine mangelnde Trennung von redaktionellen und werblichen Inhalten.Die meisten Beschwerden aus dem Jahr 2019 richteten sich gegen regionale Tageszeitungen, gefolgt von Boulevardzeitungen und überregionalen Tageszeitunge (Zeit Online, 2020).
+
+### published
+
+Wir haben das Gesamtnetzwerk in Online- und Offline-Publikationen unterteilt.
+Hierfür wurden die online-Artikel türkis eingefärbt und die offline-Artikel grün.
+
+```{r Gesamtnetzwerk eingefärbt nach gerügten Online- und Offline-Publikationen, fig.height=9, fig.width=16}
+
+# Einfärben der online- (türkis) und offline-(grün) veröffentlichten Artikeln 
+
+V(RRFinal_u)[V(RRFinal_u)$published==3]$color <- "grey80"
+V(RRFinal_u)[V(RRFinal_u)$published==0]$color <- "mediumaquamarine"
+V(RRFinal_u)[V(RRFinal_u)$published==1]$color <- "mediumseagreen"
+
+plot(RRFinal_u,
+   layout=layout_nicely,
+   vertex.label.color = "black",
+   main="Online- vs. Offline-Publikationen",
+   sub="Gesamtnetzwerk")
+     
+```
+
+Dabei wird sichtbar, dass der größere Teil der gerügten Artikel offline war.
+Erst seit dem 1.
+Januar 2009 gehören journalistische Beträge im Internet zum Zuständigkeitsbereich des Presserats (Deutscher Presserat, 2020).
+Das lässt sich dadurch erklären, dass das wenige Artikel online veröffentlicht wurden, bzw.
+weniger Medien eine Onlinepräsenz hatten.
+Die online gerügten Artikel nehmen mit der Zeit zu.
+
+#### Zeitverlauf online und offline
+
+```{r Zeitverlauf Offline-Publikationen, fig.height=9, fig.width=16}
+
+# Vorbereitung, da sonst die Online-Netzwerke im darauffolgenden Chunk leer wären (ausgenommen die Ziffern)
+
+c1 <- delete.edges(RRFinal_u, E(RRFinal_u)[year >"1994"])
+RRyear1_2 <- delete.vertices(c1, degree(b1)==0)
+
+c2 <- delete.edges(RRFinal_u, E(RRFinal_u)[year <"1995"])
+c2a <- delete.edges(c2, E(c2)[year >"1999"])
+RRyear2_2 <- delete.vertices(c2a, degree(c2a)==0)
+
+c3 <- delete.edges(RRFinal_u, E(RRFinal_u)[year <"2000"])
+c3a <- delete.edges(c3, E(c3)[year >"2004"])
+RRyear3_2 <- delete.vertices(c3a, degree(c3a)==0)
+
+c4 <- delete.edges(RRFinal_u, E(RRFinal_u)[year <"2005"])
+c4a <- delete.edges(c4, E(c4)[year >"2009"])
+RRyear4_2 <- delete.vertices(c4a, degree(c4a)==0)
+
+c5 <- delete.edges(RRFinal_u, E(RRFinal_u)[year <"2010"])
+c5a <- delete.edges(c5, E(c5)[year >"2014"])
+RRyear5_2 <- delete.vertices(c5a, degree(c5a)==0)
+
+c6 <- delete.edges(RRFinal_u, E(RRFinal_u)[year <"2015"])
+#c6a <- delete.edges(c6, E(c6)[year >"2020"])
+RRyear6_2 <- delete.vertices(c6, degree(c6)==0)
+
+# Online-Nodes rauslöschen
+
+RRyear1_off <- delete.vertices(RRyear1, V(RRyear1)[published == 0 ])
+RRyear2_off <- delete.vertices(RRyear2, V(RRyear2)[published == 0 ])
+RRyear3_off <- delete.vertices(RRyear3, V(RRyear3)[published == 0 ])
+RRyear4_off <- delete.vertices(RRyear4, V(RRyear4)[published == 0 ])
+RRyear5_off <- delete.vertices(RRyear5, V(RRyear5)[published == 0 ])
+RRyear6_off <- delete.vertices(RRyear6, V(RRyear6)[published == 0 ])
+
+# Offline-Nodes rauslöschen
+
+RRyear1_on <- delete.vertices(RRyear1_2, V(RRyear1_2)[published == 1 ])
+RRyear2_on <- delete.vertices(RRyear2_2, V(RRyear2_2)[published == 1 ])
+RRyear3_on <- delete.vertices(RRyear3_2, V(RRyear3_2)[published == 1 ])
+RRyear4_on <- delete.vertices(RRyear4_2, V(RRyear4_2)[published == 1 ])
+RRyear5_on <- delete.vertices(RRyear5_2, V(RRyear5_2)[published == 1 ])
+RRyear6_on <- delete.vertices(RRyear6_2, V(RRyear6_2)[published == 1 ])
+```
+
+```{r Vergleich online/offline im Zeitverlauf}
+
+#Gleichzeitige Darstellung
+
+par(mfrow=c(1,2),mar=c(1,1,1,1))
+
+# Darstellung
+
+## Bereich 1990 - 1994
+
+plot(RRyear1_off,
+    layout=layout_nicely,
+     edge.curved=.2,
+     edge.curved=curve_multiple(RRyear1_off),
+     vertex.label.cex=c(0.3),
+     vertex.label.color = "black",
+     main="1990 - 1994 offline")
+
+plot(RRyear1_on,
+    layout=layout_nicely,
+     edge.curved=.2,
+     edge.curved=curve_multiple(RRyear1_on),
+     vertex.label.cex=c(0.3),
+     vertex.label.color = "black",
+     main="1990 - 1994 online") 
+
+## Bereich 1995 - 1999
+
+plot(RRyear2_off,
+    layout=layout_nicely,
+     edge.curved=.2,
+     edge.curved=curve_multiple(RRyear2_off),
+     vertex.label.cex=c(0.3),
+     vertex.label.color = "black",
+     main="1995 - 1999 offline")
+
+plot(RRyear2_on,
+    layout=layout_nicely,
+     edge.curved=.2,
+     edge.curved=curve_multiple(RRyear2_on),
+     vertex.label.cex=c(0.3),
+     vertex.label.color = "black",
+     main="1995 - 1999 online")
+
+## Bereich 2000 - 2004
+
+plot(RRyear3_off,
+    layout=layout_nicely,
+     edge.curved=.2,
+     edge.curved=curve_multiple(RRyear3_off),
+     vertex.label.cex=c(0.3),
+     vertex.label.color = "black",
+     main="2000 - 2004 offline")
+
+plot(RRyear3_on,
+    layout=layout_nicely,
+     edge.curved=.2,
+     edge.curved=curve_multiple(RRyear3_on),
+     vertex.label.cex=c(0.3),
+     vertex.label.color = "black",
+     main="2000 - 2004 online")
+
+## Bereich 2005 - 2009
+
+plot(RRyear4_off,
+    layout=layout_nicely,
+     edge.curved=.2,
+     edge.curved=curve_multiple(RRyear4_off),
+     vertex.label.cex=c(0.3),
+     vertex.label.color = "black",
+     main="2005 - 2009 offline")
+
+plot(RRyear4_on,
+    layout=layout_nicely,
+     edge.curved=.2,
+     edge.curved=curve_multiple(RRyear4_on),
+     vertex.label.cex=c(0.3),
+     vertex.label.color = "black",
+     main="2005 - 2009 online")
+
+## Bereich 2010 - 2014
+
+plot(RRyear5_off,
+    layout=layout_nicely,
+     edge.curved=.2,
+     edge.curved=curve_multiple(RRyear5_off),
+     vertex.label.cex=c(0.3),
+     vertex.label.color = "black",
+     main="2010 - 2014 offline")
+
+plot(RRyear5_on,
+    layout=layout_nicely,
+     edge.curved=.2,
+     edge.curved=curve_multiple(RRyear5_on),
+     vertex.label.cex=c(0.3),
+     vertex.label.color = "black",
+     main="2010 - 2014 online")
+
+## Bereich 2015 - 2019
+
+plot(RRyear6_off,
+    layout=layout_nicely,
+     edge.curved=.2,
+     edge.curved=curve_multiple(RRyear6_off),
+     vertex.label.cex=c(0.3),
+     vertex.label.color = "black",
+     main="2015 - 2019 offline")
+
+plot(RRyear6_on,
+    layout=layout_nicely,
+     edge.curved=.2,
+     edge.curved=curve_multiple(RRyear6_on),
+     vertex.label.cex=c(0.3),
+     vertex.label.color = "black",
+     main="2015 - 2019 online")
+
+```
+
+Für den Zeitverlauf haben wir uns für eine gleichzeitige Darstellung entschieden um die Jahresabschnitte gegenüberstellen zu können.
+Im Zeitverlauf der Rügen gegenüber online und offline Medien wird sichtbar, dass die Anzahl der online Medien zwar steigt, aber trotzdem die offline Medien überwiegen.
+Leider gibt es hier ein Systemfehler von R, der dazu führt, dass links unterschiedliche Farben für die Knoten angewendet werden.
+
+### degree
+
+#### Einzel- und Mehrfachtäter
+
+```{r Einzeltäter und Mehrfachtäter}
+
+# blau (Einfachtäter), 
+# grün (Mehrfachtäter)
+# Ziffern in türkis  
+
+# Gleichzeitige Darstellung
+
+par(mfrow=c(2,3),mar=c(1,1,1,1))
+
+## Bereich 1990 - 1994
+
+year1in <- RRyear1
+year1in
+
+# indegree für Zeitraum 1 erstellen
+
+V(year1in)$indegree <- degree(year1in, mode = "in")
+list.vertex.attributes(year1in)
+vertex.attributes(year1in)$indegree
+
+V(year1in)[V(year1in)$type==0]$color <- "mediumaquamarine"
+V(year1in)[V(year1in)$type==1]$color <- "mediumseagreen"
+V(year1in)[V(year1in)$indegree==1]$color <- "deepskyblue4"
+
+plot(year1in,
+     asp=0,
+     layout=layout_with_kk,
+     vertex.size=10,
+     vertex.frame.color=NA,
+     vertex.label.cex=c(0.3),
+     vertex.label.color = "black",
+     edge.curved=.2,
+     edge.curved=curve_multiple(year1in),
+     main="Zeitraum 1990 - 1994 (Gesamt, Einzel-Mehrfachtäter)") 
+
+## Bereich 1995 - 1999
+
+year2in <- RRyear2
+year2in
+
+# indegree für Zeitraum 2 erstellen
+
+V(year2in)$indegree <- degree(year2in, mode = "in")
+list.vertex.attributes(year2in)
+vertex.attributes(year2in)$indegree
+
+V(year2in)[V(year2in)$type==0]$color <- "mediumaquamarine"
+V(year2in)[V(year2in)$type==1]$color <- "mediumseagreen"
+V(year2in)[V(year2in)$indegree==1]$color <- "deepskyblue4"
+
+plot(year2in,
+     asp=0,
+     layout=layout_with_kk,
+     vertex.size=10,
+     vertex.frame.color=NA,
+     vertex.label.cex=c(0.3),
+     vertex.label.color = "black",
+     edge.curved=.2,
+     edge.curved=curve_multiple(year2in),
+     main="Zeitraum 1995 - 1999 (Gesamt, Einzel-Mehrfachtäter)") 
+
+## Bereich 2000 - 2004
+
+year3in <- RRyear3
+year3in
+
+# indegree für Zeitraum 3 erstellen
+
+V(year3in)$indegree <- degree(year3in, mode = "in")
+list.vertex.attributes(year3in)
+vertex.attributes(year3in)$indegree
+
+V(year3in)[V(year3in)$type==0]$color <- "mediumaquamarine"
+V(year3in)[V(year3in)$type==1]$color <- "mediumseagreen"
+V(year3in)[V(year3in)$indegree==1]$color <- "deepskyblue4"
+
+plot(year3in,
+     asp=0,
+     layout=layout_with_kk,
+     vertex.size=10,
+     vertex.frame.color=NA,
+     vertex.label.cex=c(0.3),
+     vertex.label.color = "black",
+     edge.curved=.2,
+     edge.curved=curve_multiple(year3in),
+     main="Zeitraum 2000 - 2004 (Gesamt, Einzel-Mehrfachtäter)") 
+
+## Bereich 2005 - 2009
+
+year4in <- RRyear4
+year4in
+
+# indegree für Zeitraum 4 erstellen
+
+V(year4in)$indegree <- degree(year4in, mode = "in")
+list.vertex.attributes(year4in)
+vertex.attributes(year4in)$indegree
+
+V(year4in)[V(year4in)$type==0]$color <- "mediumaquamarine"
+V(year4in)[V(year4in)$type==1]$color <- "mediumseagreen"
+V(year4in)[V(year4in)$indegree==1]$color <- "deepskyblue4"
+
+plot(year4in,
+     asp=0,
+     layout=layout_with_kk,
+     vertex.size=10,
+     vertex.frame.color=NA,
+     vertex.label.cex=c(0.3),
+     vertex.label.color = "black",
+     edge.curved=.2,
+     edge.curved=curve_multiple(year4in),
+     main="Zeitraum 2005 - 2009 (Gesamt, Einzel-Mehrfachtäter)") 
+
+## Bereich 2010 - 2014
+
+year5in <- RRyear5
+year5in
+
+# indegree für Zeitraum 5 erstellen
+
+V(year5in)$indegree <- degree(year5in, mode = "in")
+list.vertex.attributes(year5in)
+vertex.attributes(year5in)$indegree
+
+V(year5in)[V(year5in)$type==0]$color <- "mediumaquamarine"
+V(year5in)[V(year5in)$type==1]$color <- "mediumseagreen"
+V(year5in)[V(year5in)$indegree==1]$color <- "deepskyblue4"
+
+plot(year5in,
+     asp=0,
+     layout=layout_with_kk,
+     vertex.size=10,
+     vertex.frame.color=NA,
+     vertex.label.cex=c(0.3),
+     vertex.label.color = "black",
+     edge.curved=.2,
+     edge.curved=curve_multiple(year5in),
+     main="Zeitraum 2010 - 2014 (Gesamt, Einzel-Mehrfachtäter)") 
+
+## Bereich 2015 - 2019
+
+year6in <- RRyear6
+year6in
+
+# indegree für Zeitraum 6 erstellen
+
+V(year6in)$indegree <- degree(year6in, mode = "in")
+list.vertex.attributes(year6in)
+vertex.attributes(year6in)$indegree
+
+V(year6in)[V(year6in)$type==0]$color <- "mediumaquamarine"
+V(year6in)[V(year6in)$type==1]$color <- "mediumseagreen"
+V(year6in)[V(year6in)$indegree==1]$color <- "deepskyblue4"
+
+plot(year6in,
+     asp=0,
+     layout=layout_with_kk,
+     vertex.size=10,
+     vertex.frame.color=NA,
+     vertex.label.cex=c(0.3),
+     vertex.label.color = "black",
+     edge.curved=.2,
+     edge.curved=curve_multiple(year6in),
+     main="Zeitraum 2015 - 2019 (Gesamt, Einzel-Mehrfachtäter)") 
+
+
+```
+
+\#Einzel- und Mehrfachtäter
+
+Wir wollten untersuchen, welche Medien sich als Mehrfachtäter herausstellten.
+Dafür färbten wir die Mehrfachtäter in grün, die Einzeltäter in blau und die Ziffern in Türkis.
+Wir stellten sie wieder in Fünf-Jahres-Abschnitten dar.
+Es lässt sich erkennen, dass sich besonders um Ziffer 7 hauptsächlich Einzeltäter sammeln.
+Leider werden in der Abbildung manche Ziffern falsch eingefärbt, als ob sie einen Indegree hätten.
+Zum Beispiel wurden im zweiten Zeitraum war Ziffer 4 und Ziffer unbekannt falsch eingefärbt (dunkelblau).
+
+```{r Anzahl Mehrfach- und Einzeltäter, include=F}
+
+# Bereich 1990 - 1994 
+year1in
+
+#Netzwerk ohne Ziffern
+oz1 <- delete.vertices(year1in, V(year1in)[type == 0 ])
+oz1
+
+#Netzwerk ohne Mehrfachtäter
+om1 <- delete.vertices(oz1, V(oz1)[indegree != 1 ])
+om1
+
+# Bereich 1995 - 1999 
+year2in
+
+#Netzwerk ohne Ziffern
+oz2 <- delete.vertices(year2in, V(year2in)[type == 0 ])
+oz2
+
+#Netzwerk ohne Mehrfachtäter
+om2 <- delete.vertices(oz2, V(oz2)[indegree != 1 ])
+om2
+
+# Bereich 2000 - 2004 
+year3in
+
+#Netzwerk ohne Ziffern
+oz3 <- delete.vertices(year3in, V(year3in)[type == 0 ])
+oz3
+
+#Netzwerk ohne Mehrfachtäter
+om3 <- delete.vertices(oz3, V(oz3)[indegree != 1 ])
+om3
+
+# Bereich 2005 - 2009 
+year4in
+
+#Netzwerk ohne Ziffern
+oz4 <- delete.vertices(year4in, V(year4in)[type == 0 ])
+oz4
+
+#Netzwerk ohne Mehrfachtäter
+om4 <- delete.vertices(oz4, V(oz4)[indegree != 1 ])
+om4
+
+# Bereich 2010 - 2014
+year5in
+
+#Netzwerk ohne Ziffern
+oz5 <- delete.vertices(year5in, V(year5in)[type == 0 ])
+oz5
+
+#Netzwerk ohne Mehrfachtäter
+om5 <- delete.vertices(oz5, V(oz5)[indegree != 1 ])
+om5
+
+# Bereich 2015 - 2019 
+year6in
+
+#Netzwerk ohne Ziffern
+oz6 <- delete.vertices(year6in, V(year6in)[type == 0 ])
+oz6
+
+#Netzwerk ohne Mehrfachtäter
+om6 <- delete.vertices(oz6, V(oz6)[indegree != 1 ])
+om6
+
+```
+
+![](https://raw.githubusercontent.com/Artsky0/Ruegen-Ranger/main/The%2520Main%2520Thing/Bilder_Statistiken/Bilder/Medien%2520nach%2520Anzahl%2520der%2520R%25C3%25BCgen.png "Medien nach Anzahl der Rügen in Prozent") Durch dieses Diagramm wird deutlich: Mehr als 80 Prozent der ausgesprochenen Rügen stammt von Mehrfachtätern, also Zeitschriften und Zeitungen, die wiederholt gegen den Pressekodex verstoßen.
+Nur 19,2 Prozent der Rügen führen auf Einzeltäter zurück.
+
+## Die größten Übeltäter
+
+### Der größte Übeltäter: Die Bild
+
+Dabei fällt ein Medium besonders auf: Die Bild Zeitung.
+Die Degree-Werte des Gesamtnetzwerks zeigen, dass die Bild mit 168 Verbindungen das meistgerügte Medium ist.
+Darum wollen wir sie durch einem Ego-Netzwerk genauer betrachten.
+
+```{r Ego-Netzwerk und Degrees der Bild, fig.height=9, fig.width=16}
+
+# Degree-Werte des Gesamtnetzwerks anzeigen lassen
+
+sort.default(degreeRR, decreasing = TRUE)
+
+# Ego-Netzwerk der Bild bilden
+
+egoB <- make_ego_graph(RRFinal_u, order = 1, nodes = V(RRFinal_u)$name == "Bild", mode="all")
+egoB <- egoB[[1]]
+
+centr_degree(egoB, mode="all", normalized=T)
+indsB <- degree(egoB, mode="out")
+
+plot(egoB,
+     asp=0,
+     layout=layout_with_kk,
+     vertex.size=10,
+     vertex.label.color = "black",
+     main="Ego-Netzwerk Bild",
+     sub="Order = 1")
+
+# Degreewerte des Ego-Netzwerks berechnen und anzeigen lassen um zu sehen, gegen welche Ziffern die Bild am häufigsten verstoßen hat
+
+degreeB <- degree(egoB, mode="all")
+sort.default(degreeB, decreasing = TRUE)
+
+```
+
+Hier stellt sich ganz klar heraus, dass die Bild am meisten gegen Ziffer 8 verstoßen hat.
+Ziffer 8 soll den Schutz der Persönlichkeit gewährleisten.
+Gegen Ziffer 6 hingegen nur einmal, die die Trennung der Tätigkeiten von Journalisten und Verlegern beschreibt.
+Der Presserat rügte die Bild wegen einem Verstoß gegen die Ziffer 7 nur zwei Mal.
+Diese Ziffer definiert, dass es eine klare Trennung zwischen Werbung und Redaktion geben muss.
+Da die Ziffer 7 die zweitmeist gerügte Ziffer ist und die Bild der "größte Übeltäter" überraschte uns diese Erkenntnis.
+
+### Das Coupé Magazin
+
+```{r Ego-Netzwerk und Degrees Coupé, fig.height=9, fig.width=16}
+
+# Degree-Werte des Gesamtnetzwerks anzeigen lassen
+
+sort.default(degreeRR, decreasing = TRUE)
+
+# Ego-Netzwerk von Coupé bilden
+
+egoC <- make_ego_graph(RRFinal_u, order = 1, nodes = V(RRFinal_u)$name == "Coupé", mode="all")
+egoC <- egoC[[1]]
+
+centr_degree(egoC, mode="all", normalized=T)
+indsC <- degree(egoC, mode="out")
+
+plot(egoC,
+     asp=0,
+     layout=layout_with_kk,
+     vertex.size=10,
+     vertex.label.color = "black",
+     main="Ego-Netzwerk Coupé",
+     sub="Order = 1")
+
+# Degreewerte des Ego-Netzwerks berechnen und anzeigen lassen um zu sehen, gegen welche Ziffern die Coupé am häufigsten verstoßen hat
+
+degreeC <- degree(egoC, mode="all")
+sort.default(degreeC, decreasing = TRUE)
+
+```
+
+Mit einem Degree-Wert von 23 ist das Coupé Magazin das Medium, das nach der Bild und Bild Online am meisten gerügt wurde.
+Besonders gegen Ziffer 2 (Sorgfaltspflicht) verstieß das Erotikmagazin häufig.
+Auch gegen Ziffer 1 (Wahrhaftigkeit und Achtung der Menschenwürde) und Ziffer 14 (Medizin-Berichterstattungen) wurde einige Male verstoßen.
+
+### Vergleich der drei größten Übeltäter - Die Bild, Bild Online und das Coupé Magazin
+
+```{r Vergleich Bild, Bild Online und Coupé, fig.height=9, fig.width=16}
+
+# Ego-Netzwerk von Bild Online bilden
+
+egoBO <- make_ego_graph(RRFinal_u, order = 1, nodes = V(RRFinal_u)$name == "Bild Online", mode="all")
+egoBO <- egoBO[[1]]
+
+centr_degree(egoBO, mode="all", normalized=T)
+indsBO <- degree(egoBO, mode="out")
+
+par(mfrow=c(1,3),mar=c(1,1,1,1))
+
+plot(egoB,
+     asp=0,
+     layout=layout_with_kk,
+     vertex.size=10,
+     vertex.label.color = "black",
+     main="Ego-Netzwerk Bild",
+     sub="Order = 1")
+
+plot(egoBO,
+     asp=0,
+     layout=layout_with_kk,
+     vertex.size=10,
+     vertex.label.color = "black",
+     main="Ego-Netzwerk Bild Online",
+     sub="Order = 1")
+
+plot(egoC,
+     asp=0,
+     layout=layout_with_kk,
+     vertex.size=10,
+     vertex.label.color = "black",
+     main="Ego-Netzwerk Coupé",
+     sub="Order = 1")
+```
+
+Im Vergleich der drei "größten Übeltäter" wird sichtbar, dass die Bild deutlich mehr Rügen als Coupé hat.
+Mit einem Degree-Wert von 168 hat die Bild mehr als doppelt so viele Rügen wie Bild Online (73) und mehr als das Siebenfache von Coupé (23).
+Sowohl Bild als auch Bild Online verstoßen häufig gegen den Schutz der Persönlichkeit (Ziffer 8).
+Außerdem werden Journalisten in Ziffer 11 dazu angehalten, Gewalt und Leiden nicht unangemessen darzustellen und den Jugendschutz zu beachten.
+Gegen diese Ziffer hat die Bild und Bild Online am zweithäufigsten verstoßen.
+Gemeinsam haben die Bild und das Coupé Magazin, dass sie oft gegen Ziffer 2 verstoßen haben.
+Hierbei handelt es sich um die Ziffer, welche die sorgfältige Arbeit und wahrheitsgetreue Berichterstattung der Journalisten sicherstellen soll.
+
+### Die vier weiteren größten Übeltäter nach Bild und Coupé
+
+Durch ein Ego-Netzwerk wollten wir untersuchen, gegen welche Ziffern die meistgerügten Zeitschriften und Zeitungen verstoßen haben.
+
+### Ego-Netzwerk der B.Z.
+
+```{r Ego-Netzwerk und Degrees BZ, fig.height=9, fig.width=16}
+
+# Degree-Werte des Gesamtnetzwerks anzeigen lassen
+
+sort.default(degreeRR, decreasing = TRUE)
+
+# Ego-Netzwerk von BZ bilden
+
+egober <- make_ego_graph(RRFinal_u, order = 1, nodes = V(RRFinal_u)$name == "B.Z", mode="all")
+egober <- egober[[1]]
+
+centr_degree(egober, mode="all", normalized=T)
+indsber <- degree(egober, mode="out")
+
+plot(egober,
+     asp=0,
+     layout=layout_with_kk,
+     vertex.label.color = "black",
+     vertex.size=10,
+     main="Ego-Netzwerk BZ",
+     sub="Order = 1")
+
+# Degreewerte des Ego-Netzwerks berechnen und anzeigen lassen um zu sehen, gegen welche Ziffern die BZ am häufigsten verstoßen hat
+
+degreeber <- degree(egober, mode="all")
+sort.default(degreeber, decreasing = TRUE)
+
+```
+
+Das Ego-Netzwerk der B.Z., einer Boulevardzeitung, zeigt, dass ähnlich wie bei der Bild, besonders häufig gegen Ziffer 8 verstoßen wurde.
+Boulevardzeitungen wollen durch sensationelle, dramatisierte und schockierende Geschichten ansprechen.
+Häufig wird eine bewusst direkte Ausdrucksweise benutzt, um die Neugier und den Sensationshunger der Leser zu wecken (Ohliger, 2019).
+
+### Ego-Netzwerk der Express Zeitung
+
+```{r Ego-Netzwerk und Degrees Express, fig.height=9, fig.width=16}
+
+# Degree-Werte des Gesamtnetzwerks anzeigen lassen
+
+sort.default(degreeRR, decreasing = TRUE)
+
+# Ego-Netzwerk von Express bilden
+
+egoE <- make_ego_graph(RRFinal_u, order = 1, nodes = V(RRFinal_u)$name == "Express", mode="all")
+egoE <- egoE[[1]]
+
+centr_degree(egoE, mode="all", normalized=T)
+indsE <- degree(egoE, mode="out")
+
+plot(egoE,
+     asp=0,
+     layout=layout_with_kk,
+     vertex.label.color = "black",
+     vertex.size=10,
+     main="Ego-Netzwerk Express",
+     sub="Order = 1")
+
+# Degreewerte des Ego-Netzwerks berechnen und anzeigen lassen um zu sehen, gegen welche Ziffern Express am häufigsten verstoßen hat
+
+degreeE <- degree(egoE, mode="all")
+sort.default(degreeE, decreasing = TRUE)
+
+```
+
+Auch die Express Zeitung gehört zur Boulevardpresse.
+Die verstößt besonders oft gegen Ziffer 13.
+Diese Ziffer legt fest, dass in der Berichterstattung die Unschuldsvermutung gelten muss.
+Vorverurteilungen dürfen nicht getätigt werden.
+Wie in den schon genannten Boulevardzeitungen, verstößt die Express-Zeitung auch häufig gegen die Ziffern 8 und 2.
+
+### Ego-Netzwerk der TAZ
+
+```{r Ego-Netzwerk und Degrees TAZ, fig.height=9, fig.width=16}
+
+# Degree-Werte des Gesamtnetzwerks anzeigen lassen
+
+sort.default(degreeRR, decreasing = TRUE)
+
+# Ego-Netzwerk von TAZ bilden
+
+egoT <- make_ego_graph(RRFinal_u, order = 1, nodes = V(RRFinal_u)$name == "TAZ", mode="all")
+egoT <- egoT[[1]]
+
+centr_degree(egoT, mode="all", normalized=T)
+indsT <- degree(egoT, mode="out")
+
+plot(egoT,
+     asp=0,
+     layout=layout_with_kk,
+     vertex.label.color = "black",
+     vertex.size=10,
+     main="Ego-Netzwerk TAZ",
+     sub="Order = 1")
+
+# Degreewerte des Ego-Netzwerks berechnen und anzeigen lassen um zu sehen, gegen welche Ziffern die TAZ am häufigsten verstoßen hat
+
+degreeT <- degree(egoT, mode="all")
+sort.default(degreeT, decreasing = TRUE)
+
+```
+
+Die taz stellt eine Ausnahme dar: In den Top 7 der meistgerügten Medien ist sie die einzige überregionale Tageszeitung, die nicht als Boulevardblatt gilt.
+Dennoch ist die links orientierte Zeitung nicht verlegen, auch provokante Beiträge zu veröffentlichen.
+So erschien am 15.Juni 2020 der Artikel "All cops are berufsunfähig" von Hengameh Yaghoobifarah.
+Insgesamt wurden 382 Beschwerden über diesen Beitrag beim Presserat eingereicht (Deutscher Presserat, 2020).
+Dieser hielt die im Beitrag getätigten Aussagen jedoch für von der Pressefreiheit gedeckt (ebd.).
+Im Ego-Netzwerk erkennbar ist, dass die taz gegen die Ziffer 1, 2 und 9 gleichermaßen verstößt.
+Diese Ziffern decken die Wahrhaftigkeit und Achtung der Menschenwürde (Ziffer 1), die Sorgfaltspflicht (Ziffer 2) und den Schutz der Ehre (Ziffer 9) ab.
+
+### Ego-Netzwerk der Hamburger Morgenpost
+
+```{r Ego-Netzwerk und Degrees Hamburger Morgenpost, fig.height=9, fig.width=16}
+
+# Degree-Werte des Gesamtnetzwerks anzeigen lassen
+
+sort.default(degreeRR, decreasing = TRUE)
+
+# Ego-Netzwerk von Hamburger MOrgenpost bilden
+
+egoH <- make_ego_graph(RRFinal_u, order = 1, nodes = V(RRFinal_u)$name == "Hamburger Morgenpost", mode="all")
+egoH <- egoH[[1]]
+
+centr_degree(egoH, mode="all", normalized=T)
+indsH <- degree(egoH, mode="out")
+
+plot(egoH,
+     asp=0,
+     layout=layout_with_kk,
+     vertex.label.color = "black",
+     vertex.size=10,
+     main="Ego-Netzwerk Hamburger Morgenpost",
+     sub="Order = 1")
+
+# Degreewerte des Ego-Netzwerks berechnen und anzeigen lassen um zu sehen, gegen welche Ziffern die Hamburger Morgenpost am häufigsten verstoßen hat
+
+degreeH <- degree(egoH, mode="all")
+sort.default(degreeH, decreasing = TRUE)
+
+```
+
+Auch die Hamburger Morgenpost gehört zur Boulevardpresse.
+In diesem Sinne ist auch hier zu erkennen, dass sie primär gegen Ziffer 8 und 2 verstößt.
+
+## Weitere Arbeit: Ab jetzt ohne Bild
+
+Um den Fokus auf andere Übeltäter als die Bild zu setzen, haben wir alle Bild-Knoten aus dem Gesamtnetzwerk gelöscht.
+
+```{r Finales Netzwerk ohne Bild-Knoten, fig.height=9, fig.width=16, include=F}
+
+# Alle Bild-Nodes rauslöschen (über "- vertices(Name)"), Netzwerk ungerichtet und gerichtet erstellen
+
+RRFinal_BU <- graph_from_data_frame(d=edgematrix, vertices=nodesfinal, directed=FALSE) - vertices("Bild", 
+                                                                                          "Bild Online",
+                                                                                          "Bild Aachen",
+                                                                                          "Bild am Sonntag",
+                                                                                          "Bild Berlin",
+                                                                                          "Bild Bremen",
+                                                                                          "Bild Dresden",
+                                                                                          "Bild.de",
+                                                                                          "Bild Frankfurt",
+                                                                                          "Bild Hannover",
+                                                                                          "Bild Hamburg",
+                                                                                          "Bild Köln",
+                                                                                          "Bild München",
+                                                                                          "Bild Mainz Wiesbaden",
+                                                                                          "Bild Nürnberg",
+                                                                                          "Bild Rhein-Neckar",
+                                                                                          "Bild Stuttgart",
+                                                                                          "Bild + Online",
+                                                                                          "Auto Bild")
+
+RRFinal_BD <- graph_from_data_frame(d=edgematrix, vertices=nodesfinal, directed=TRUE) - vertices("Bild", 
+                                                                                          "Bild Online",
+                                                                                          "Bild Aachen",
+                                                                                          "Bild am Sonntag",
+                                                                                          "Bild Berlin",
+                                                                                          "Bild Bremen",
+                                                                                          "Bild Dresden",
+                                                                                          "Bild.de",
+                                                                                          "Bild Frankfurt",
+                                                                                          "Bild Hannover",
+                                                                                          "Bild Hamburg",
+                                                                                          "Bild Köln",
+                                                                                          "Bild München",
+                                                                                          "Bild Mainz Wiesbaden",
+                                                                                          "Bild Nürnberg",
+                                                                                          "Bild Rhein-Neckar",
+                                                                                          "Bild Stuttgart",
+                                                                                          "Bild + Online",
+                                                                                          "Auto Bild")
+
+# Grundlegende Node- und Edge-Attribute hinzufügen
+
+V(RRFinal_BU)$frame.color <- "NA"
+V(RRFinal_BD)$frame.color <- "NA"
+V(RRFinal_BU)[V(RRFinal_BU)$type == 0]$shape <- "square"
+V(RRFinal_BU)[V(RRFinal_BU)$type == 1]$shape <- "circle"
+V(RRFinal_BD)[V(RRFinal_BD)$type == 0]$shape <- "square"
+V(RRFinal_BD)[V(RRFinal_BD)$type == 1]$shape <- "circle"
+E(RRFinal_BD)$arrow.size <- 0.1
+
+# Degreewerte berechnen und anzeigen lassen
+
+degreeoB <- degree(RRFinal_BD, mode="all")
+sort.default(degreeoB, decreasing = TRUE)
+```
+
+![](https://raw.githubusercontent.com/Artsky0/Ruegen-Ranger/main/The%2520Main%2520Thing/Bilder_Statistiken/Bilder/R%25C3%25BCgen%2520nach%2520Medien%2520OHNE%2520BILD%2520Top%252010.png "Rügen nach Medien OHNE BILD Top 10")
+
+Auf Platz zwei und drei des Rügen-Rankings folgen mit 23 Verstößen gegen den Pressekodex das Coupé-Magazin und mit 21 Verstößen die B.Z.
+Das Coupé Magazin ist eine Erotikzeitschrift vom Pabel Moewig Verlag.
+Dieser gehörte zur Bauer Media Group, bis er 2020 geschlossen wurde (Badisches Tagblatt, 2020).
+Bereits 2014 war Coupé mit 18 Rügen auf Platz drei der meistgerügten Medien (Norddeutscher Rundfunk, 2014).
+Diese Untersuchung rechnete allerdings die Rügen schon ab 1986 (ebd.).
+Das meistgerügte Medium hinter der Bild, war damals die B.Z.
+(ebd.).
+In unserer Analyse steht sie allerdings auf dem zweiten Platz hinter Coupé.
+Die B.Z.
+ist eine Boulevard Zeitung, die zu Axel Springer SE gehört.
+Auf der Website wird sie als Marke der Bild Gruppe bezeichnet (B.Z. Berlin, 2014).
+Gemeinsam mit der Bild, ist sie bis heute (2021) die auflagenstärkste überregionale Tageszeitung in Deutschland (IVW, 2021).
+2013 vereinigte die Axel Springer AG die Redaktionen der B.Z.
+und der Bild-Berlin zusammen.
+Dabei behielten jedoch beide Titel ihre Eigenständigkeit (Axel Springer, 2013).
+Auf dem dritten Platz mit 18 Rügen, befindet sich die Express Zeitung, ebenfalls ein Boulevard Medium mit Sitz in Köln (Wikipedia, 2021).
+Sie gehört zum DuMont.next GmbH & Co.
+KG Verlag (Express, 2020).
+2011 war ihr online Auftritt der am meisten besuchteste von regionalen Tageszeitungen in Deutschland (DuMont, 2011).
+Bereits zwischen 1986 und 2014 war sie eine der meistgerügten Zeitungen in Deutschlands (Norddeutscher Rundfunk, 2014).
+Auf dem vierten Platz befindet sich die links ausgerichtete überregionale Tageszeitung taz (14 Rügen), die als Genossenschaftsmodell organisiert ist (deutschland.de, 2012).
+Sie wird als „alternativ und systemkritisch" beschrieben (ebd.). Laut ihrem Selbstverständnis will sie eine kritische Öffentlichkeit herstellen und „wendet sich gegen jede Form von Diskriminierung" (Taz, 2008).
+Sie gehört zur TAZ Verlags- und Vertriebsgesellschaft mit beschränkter Haftung Berlin (Taz, 2016).
+Auch sie gehört schon länger zu den meistgerügten Zeitungen (Norddeutscher Rundfunk, 2014).
+Den fünften Platz belegt die Hamburger Morgenpost mir 13 Rügen.
+Die regionale Boulevardzeitung gehört dem Morgenpost Verlag GmbH (Mopo, 2021).
+Hierbei wird deutlich, dass besonders Boulevardzeitungen sehr oft gerügt werden.
+
+```{r Ego-Netzwerk Ziffer 8 ohne Bild, fig.height=9, fig.width=16}
+
+# Ego-Netzwerk Ziffer 8 ohne Bild erstellen
+
+ego8B <- make_ego_graph(RRFinal_BD, order = 1, nodes = V(RRFinal_BD)$name == "Pressekodex Ziffer 8", mode="all")
+egoz8B <- ego8B[[1]]
+
+egoz8B_2 <- delete.vertices(egoz8B, degree(egoz8B)==1)
+
+centr_degree(egoz8B_2, mode="in", normalized=T)
+inds8B <- degree(egoz8B_2, mode="in")
+
+V(egoz8B_2)[V(egoz8B_2)$type==0]$color <- "lavenderblush4"
+V(egoz8B_2)[V(egoz8B_2)$type==1]$color <- "mediumaquamarine"
+
+plot(egoz8B_2,
+     asp=0,
+     layout=layout_with_kk,
+     vertex.size=inds8B*2,
+     vertex.label.color = "black",
+     main="Ego-Netzwerk Ziffer 8",
+     sub="ohne Bild, indegree > 1")
+```
+
+Wir wollten sehen, welche Medien außer den Bild-Publikationen besonders häufig gegen die Ziffer 8 verstoßen haben.
+Da die Einzeltäter in diesem Fall nicht wichtig sind, löschen wir alle Medien mit einem Degree-Wert der kleiner oder gleich 1 ist.
+Außerdem sind die Nodes um den Faktor 2 vergrößert, damit die Verhältnisse noch klarer zu erkennen sind.
+Dabei fällt vor allem die B.Z., der Berliner Kurier und die Dresdner Morgenpost auf.
+Der Berliner Kurier beschreibt sich auf seiner Website selbst als "Berlins ehrliche Boulevard-Zeitung" und gehört zur Berliner Verlag GmbH (2021).
+Die Dresdner Morgenpost ist ebenfalls ein Boulevardblatt und wird von der DDV Mediengruppe verlegt (Morgenpost, 2021).
+Regionale Tages- und Sonntagszeitungen wie die Hannoversche Allgemeine Zeitung, die Schwäbische Zeitung oder Sonntag Aktuell, die nicht in den Boulevard-Bereich fallen, sind hingegen nur wenig gerügt worden.
+
+```{r Ego-Netzwerk Ziffer 7 ohne Bild, fig.height=9, fig.width=16}
+
+# Ego-Netzwerk Ziffer 8 ohne Bild erstellen
+
+ego7B <- make_ego_graph(RRFinal_BD, order = 1, nodes = V(RRFinal_BD)$name == "Pressekodex Ziffer 7", mode="all")
+egoz7B <- ego7B[[1]]
+
+egoz7B_2 <- delete.vertices(egoz7B, degree(egoz7B)==1)
+
+centr_degree(egoz7B_2, mode="in", normalized=T)
+inds7B <- degree(egoz7B_2, mode="in")
+
+V(egoz7B_2)[V(egoz7B_2)$type==0]$color <- "lavenderblush4"
+V(egoz7B_2)[V(egoz7B_2)$type==1]$color <- "mediumaquamarine"
+
+plot(egoz7B_2,
+     asp=0,
+     layout=layout_with_kk,
+     vertex.size=inds7B*4,
+     vertex.label.color = "black",
+     main="Ego-Netzwerk Ziffer 7",
+     sub="ohne Bild, indegree > 1")
+
+
+```
+
+Auch das Ego-Netzwerk der Ziffer 7 wollten wir noch einmal ohne die Bild darstellen.
+Da die Einzeltäter auch für dieses Netzwerk nicht relevant sind, löschen wir sie.
+Um die Verhältnisse noch klarer darzustellen werden die Nodes mit dem Faktor 4 vergrößert.
+Hier stechen vor allem die TV Hören und Sehen, TV14 und Prisma hervor, die alle drei Programmzeitschriften sind.
+Im online Archiv des Presserats lässt sich einsehen, dass Programmzeitschriften häufig gerügt wurden, weil die Werbung für Medikamente, alternative Heilmittel und Reiseveranstalter nicht vom redaktionellen Teil der Zeitschrift zu trennen war (Presserat, 2021).
+Zeitschriften wie Die Neue Frau, Alles für die Frau oder Myself, deren Zielgruppe Frauen sind, wurden oft gerügt, weil sie Werbung für Kosmetika nicht als solche kennzeichneten (ebd.) Allerdings konnte man schon in den vorherigen Ego-Netzwerken der Ziffer 7 erkennen, dass viele Medien nur einmal gegen diese Ziffer verstoßen haben.
+
+\#Zeitverlauf ohne die Bild
+
+```{r Zeitverlauf ohne Bild gewichtet, fig.height=9, fig.width=16}
+
+# Gleichzeitige Darstellung
+
+par(mfrow=c(2,3),mar=c(1,1,1,1))
+
+# Einfärben/Attribute
+
+V(RRFinal_BD)[V(RRFinal_BD)$type==0]$color <- "lavenderblush4"
+V(RRFinal_BD)[V(RRFinal_BD)$type==1]$color <- "mediumaquamarine"
+E(RRFinal_BD)$arrow.size <- 0.1
+
+# Bereich 1990 - 1994
+
+ob1 <- delete.edges(RRFinal_BD, E(RRFinal_BD)[year >"1994"])
+RRyear1_B <- delete.vertices(ob1, degree(ob1)==0)
+
+RRyear1_B
+
+# Degreewerte
+
+centr_degree(RRyear1_B, mode="in", normalized=T)
+inds1B <- degree(RRyear1_B, mode="in")
+
+plot(RRyear1_B,
+     asp=0,
+     layout=layout_nicely,
+     edge.curved=.2,
+     edge.curved=curve_multiple(RRyear1_B),
+     vertex.size=inds1B,
+     vertex.label.color = "black",
+     main="Zeitraum 1990 - 1994 (Gesamt, gewichtet)")
+
+# Bereich 1995 - 1999
+
+ob2 <- delete.edges(RRFinal_BD, E(RRFinal_BD)[year <"1995"])
+ob2a <- delete.edges(ob2, E(ob2)[year >"1999"])
+RRyear2_B <- delete.vertices(ob2a, degree(ob2a)==0)
+
+RRyear2_B
+
+# Degreewerte
+
+centr_degree(RRyear2_B, mode="in", normalized=T)
+inds2B <- degree(RRyear2_B, mode="in")
+
+plot(RRyear2_B,
+     asp=0,
+     layout=layout_nicely,
+     edge.curved=.2,
+     edge.curved=curve_multiple(RRyear2_B),
+     vertex.size=inds2B,
+     vertex.label.color = "black",
+     main="Zeitraum 1995 - 1999 (Gesamt, gewichtet)")
+
+# Bereich 2000 - 2004
+
+ob3 <- delete.edges(RRFinal_BD, E(RRFinal_BD)[year <"2000"])
+ob3a <- delete.edges(ob3, E(ob3)[year >"2004"])
+RRyear3_B <- delete.vertices(ob3a, degree(ob3a)==0)
+
+RRyear3_B
+
+# Degreewerte
+
+centr_degree(RRyear3_B, mode="in", normalized=T)
+inds3B <- degree(RRyear3_B, mode="in")
+
+plot(RRyear3_B,
+     asp=0,
+     layout=layout_nicely,
+     edge.curved=.2,
+     edge.curved=curve_multiple(RRyear3_B),
+     vertex.size=inds3B,
+     vertex.label.color = "black",
+     main="Zeitraum 2000 - 2004 (Gesamt, gewichtet)")
+
+# Bereich 2005 - 2009
+
+ob4 <- delete.edges(RRFinal_BD, E(RRFinal_BD)[year <"2005"])
+ob4a <- delete.edges(ob4, E(ob4)[year >"2009"])
+RRyear4_B <- delete.vertices(ob4a, degree(ob4a)==0)
+
+RRyear4_B
+
+# Degreewerte
+
+centr_degree(RRyear4_B, mode="in", normalized=T)
+inds4B <- degree(RRyear4_B, mode="in")
+
+plot(RRyear4_B,
+     asp=0,
+     layout=layout_nicely,
+     edge.curved=.2,
+     edge.curved=curve_multiple(RRyear4_B),
+     vertex.size=inds4B,
+     vertex.label.color = "black",
+     main="Zeitraum 2005 - 2009 (Gesamt, gewichtet)")
+
+# Bereich 2010 - 2014
+
+ob5 <- delete.edges(RRFinal_BD, E(RRFinal_BD)[year <"2010"])
+ob5a <- delete.edges(ob5, E(ob5)[year >"2014"])
+RRyear5_B <- delete.vertices(ob5a, degree(ob5a)==0)
+
+RRyear5_B
+
+# Degreewerte
+
+centr_degree(RRyear5_B, mode="in", normalized=T)
+inds5B <- degree(RRyear5_B, mode="in")
+
+plot(RRyear5_B,
+     asp=0,
+     layout=layout_nicely,
+     edge.curved=.2,
+     edge.curved=curve_multiple(RRyear5_B),
+     vertex.size=inds5B,
+     vertex.label.color = "black",
+     main="Zeitraum 2010 - 2014 (Gesamt, gewichtet)")
+
+# Bereich 2015 - 2019
+
+ob6 <- delete.edges(RRFinal_BD, E(RRFinal_BD)[year <"2015"])
+ob6a <- delete.edges(ob6, E(ob6)[year >"2019"])
+RRyear6_B <- delete.vertices(ob6a, degree(ob6a)==0)
+
+RRyear6_B
+
+# Degreewerte
+
+centr_degree(RRyear6_B, mode="in", normalized=T)
+inds6B <- degree(RRyear6_B, mode="in")
+
+plot(RRyear6_B,
+     asp=0,
+     layout=layout_nicely,
+     edge.curved=.2,
+     edge.curved=curve_multiple(RRyear6_B),
+     vertex.size=inds6B,
+     vertex.label.color = "black",
+     main="Zeitraum 2015 - 2019 (Gesamt, gewichtet)")
+
+```
+
+Im Zeitverlauf ohne die Bild wollten wir sehen, in welchen Jahren andere Medien besonders häufig gerügt wurden.
+Dafür stellen wir die einzelnen Fünf-Jahres Abschnitte als gewichtetes Netzwerke dar.
+In Zeitraum von 1990 bis 1994 steht die Ziffer 2 im Mittelpunkt.
+Einige Mehrfachtäter, wie Coupé, die TZ oder Mittelbayerische Zeitung sind durch die Gewichtung sichtbar, stechen jedoch nicht außergewöhnlich hervor.
+Die Ziffern 4 und 5 bilden mit der Hamburger Morgenpost eine Triade und sind nicht mit dem restlichen Netzwerk verbunden.
+Das Coupé Magazin erhielt zwischen 1995 und 1999 am meisten Rügen und ist im Zentrum des Netzwerks angeordnet.
+Es ist das Verbindungsstück, auf das viele Kanten zulaufen.
+Währenddessen ist die Dyade Eulenspiegel und Ziffer Unbekannt und das als Teilnetzwerk der Ziffer 7 nicht mit dem Netzwerk verbunden.
+Ziffer 7 ist durch das Shape Magazin, einer Frauenzeitschrift mit dem Schwerpunkt Fitness, mit der Ziffer 6 verbunden Im Netzwerk des Zeitraums 2000 bis 2004 besteht das Zentrum des Netzwerks aus einigen Übeltätern, wie die B.Z., Express, Coupé, taz und der Stern.
+Wie schon erwähnt, war 2001 das Jahr in dem die meisten Rügen verteilt wurden, darum sind, durch die Gewichtung, auch klar zu erkennende Übeltäter zu sehen.
+Im Vergleich dazu sind im Netzwerk der Jahre 2005 bis 2009 weniger Rügen an die Mehrfachtäter verteilt worden.
+Hier ist die Hamburger Morgenpost und die Thüringer Allgemeine als mehrfach gerügte Medien zu erkennen.
+Auch das Prisma Magazin wurde häufiger für einen Verstoß gegen Ziffer 7 gerügt.
+Von 2010 bis 2014 wurde TZ Online und WELT Online häufig gerügt, zudem hat sich ein Triaden Teilnetzwerk um Ziffer 12 gebildet.
+In diesem Jahresabschnitt fällt auf, dass besonders die online Ausgaben der Medien gerügt wurden (Augsburger Allgemeine Online, B.Z.-Online, Express Online, etc.).
+Das liegt daran, dass, wie schon erwähnt, erst seit Anfang 2009 die Onlineberichterstattung der Medien zum Zuständigkeitsbereich des Presserates gehört (Deutscher Presserat, 2008).
+Im Zeitraum von 2015 bis 2019 bildet sich wieder ein Dyaden Teilnetzwerk zwischen Ziffer 9 und Web.de, sowie ein Teilnetzwerk um die Ziffer 12.
+Als Übeltäter stellt sich in diesem Zeitabschnitt Focus Online heraus.
+Es fällt auf - Im Gegensatz zu den Jahresnetzwerken, welche die Bild und regionalen Bild-Zeitungen beinhalten, kommen hier etwas öfter Teilnetzwerke zustande.
+
+# 5. Diskussion
+
+### Fazit
+
+Unsere anfangs formulierten Arbeitshypothesen haben sich zum Teil als richtig erwiesen: Die Bild hat die meisten Rügen erhalten.
+Von 1990 bis 2019 hat der Presserat insgesammt 794 Rügen ausgesprochen.
+241 davon, also mehr als ein Viertel, kassierte die Bild und Bild Online, ohne all ihren regionalen Ableger.
+Dazu lässt sich auch behaupten, dass die Bild gerade damit spielt, sich nicht an die Regeln zu halten.
+Und dem Erfolg der Boulevardzeitung tut dies keinen Abbruch - im Gegenteil.
+Die Otto-Brenner-Stiftung veröffentlichte 2011 eine Studie, die sich mit der Bild auseinandersetzte.
+Die Studie stellte die Hypothese auf, dass die Bild weniger ein journalistisches Produkt und viel mehr eine Möglichkeit wäre, sich als Medium selbst zu inszenieren (Leyendecker, 2011).
+Dabei würde die Informationsvermittlung in den Hintergrund treten und die Zeitung eher PR in eigener Sache machen.
+So resümierten die Forscher, dass die Bild gerade davon leben würde, Grenzen zu überschreiten (Arlt & Storz, 2011).
+Anstatt weitestgehend neutral zu berichten, wie es der Journalismus vorsieht, vertritt die Bild in ihrer Berichterstattung ihre eigene Meinung.
+Angelehnt an die gesprochene Sprache vereinfacht sie, dramatisiert und emotionalisiert die Artikel.
+Das ist auch in unserer Forschung deutlich geworden: Zwischen 1990 und 2019 hat die Bild mit Abstand am meisten gegen den Pressekodex verstoßen.
+Die Hypothese, dass die Rügen zwischen 1990 und 2019 konstant zugenommen haben, können wir nicht bestätigen.
+Insgesamt hat sich die Anzahl der Rügen von 1990 (=11) bis 2001 (=49) gesteigert.
+Das kann daran liegen, dass in den Jahren 1996 und 2001 der Kodex durch eine Neufassung überarbeitet wurde und somit mehr Rügen erteilt hat.
+Jedoch hat sich die Anzahl der Rügen in den darauffolgenden Jahren im Bereich von 30-40 Rügen pro Jahr eingependelt.
+Allerdings sind die Beschwerden über die Jahre angestiegen.
+Der Presserat beurteilt die eingegangenen Beschwerden jedoch nicht alle als schwere ethische Verstöße.
+Nur wenn diese vorliegen, spricht er eine öffentliche Rüge aus.
+Wenn man die Jahre seit 2013 betrachtet, so ist die Beschwerdezahl 2019 die zweithöchste nach 2015, als es 2.358 Beschwerden gab.
+Zwischen dem Eingang einer Beschwerde und der Reaktion des Presserates vergehen oft Monate, was gerade bei der vergleichsweise schnellen Medienrezeption im Online-Journalismus ein Problem darstellen kann (Grin, 2015).
+Auch unsere Hypothese zu den Ziffern 8 und 7 stellte sich als wahr heraus.
+Im Hinblick auf die einzelnen Ziffern wird deutlich, dass bestimmte Verstöße überwiegen.
+Die Ziffer 8 weist zum Beispiel den höchsten Degree-Wert auf.
+Und die Ziffer 7 fällt durch ihr Teilnetzwerk und ihr abgegrenztes Netzwerk besonders auf.
+Der ausschlaggebende Grund für öffentliche Rügen sind meistens sensationsheischende Berichterstattung, mangelnde Sorgfalt oder Diskriminierung (DPB, 2016).
+Der Presserat wird ohne Sanktionen seinem Zweck als unabhängiges Gremium nicht wirklich gerecht.
+Denn Medien wie die Bild sehen den lockeren Umgang mit Verstößen als Grund, immer weiter zu machen und Rügen ohne Strafen zu kassieren.
+Die Redaktion berichtete schon mal mit Überschriften wie „Irre!"
+über die Entscheidungen des Gremiums (Deutschlandfunk, 2020). 2015 startete die Boulevardzeitung sogar eine regelrechte Kampagne gegen den Presserat, indem sie aufgrund einer ihrer Meinung nach ungerechtfertigten Rüge, das Foto eines 16-Jährigen druckte, der eine junge Frau ermordet hatte (Frankfurter Rundschau, 2015). Auch kritisieren viele Journalisten, dass der Presserat nicht mehr zeitgemäß ist. Nach der Journalistenvereinigung Netzwerk Recherche gehört die Trennung von PR und Journalismus demnach zwingend als Ziffer in den Pressekodex (Netzwerk Recherche, 2006).
+
+### Limitation und Ausblick
+
+In dieser Netzwerkanalyse haben wir nur die Rügen betrachtet, aber nicht die Missbilligungen oder Hinweise, die der Presserat ausspricht.
+Somit stellt dieses Netzwerk nur die schlimmsten Verstöße dar, dient jedoch nicht als ein vollständiges Bild über problematische Berichterstattung in Deutschland.
+Für künftige Forschungen könnten die Hinweise und Missbilligungen der Medienlandschaft ebenfalls untersucht werden, um ein genaueres Ergebnis zu erhalten.
+Unsere Analyse lässt außerdem nicht nachvollziehen, welche Journalisten besonders häufig Artikel verfasst haben, die gerügt wurden.
+Auch dies kann ein weiter Punkt sein, der in zukünftiger Forschung untersucht werden könnte.
+Allerdings könnte diese Studie als Ausgangspunkt für eine langfristige Untersuchung der Entwicklung der Rügen dienen.
+Bisher scheinen diese "symbolischen Strafen" nicht besonders erfolgreich zu sein, denn sie haben kaum eine abschreckende Wirkung.
+Besonders Boulevardzeitungen verstoßen immer wieder gegen den Pressekodex.
+Der Presserat könnte diese Untersuchungen als Anlass für eine Reform nutzen.
+
+# 6. Team
+
+### Teammitglieder
+
+Annegret Leichte (al123) Artur Stolinsky (as383) Barbara Beck (bb097) Eileen Wagner (ew043) Kristiyana Kirilova (kk149) Maren Krämer (mk341)
+
+### Arbeitsaufwand und Rollen im Team
+
+Mit der gesamten Gruppe fanden wöchentliche Treffen statt, um sich gegenseitig auf den neuesten Stand zu bringen.
+Die Arbeit wurde aufgeteilt in das Schreiben des Forschungsberichts und das Schreiben des Codes.
+
+Bericht-Team: Beschriftung und Interpretation der Chunks, Recherche und Literaturarbeit.
+Annegret Leichte: 68 Stunden, Eileen Wagner: 68 Stunden, Kristiyana Kirilova: 65 Stunden
+
+Code-Team: Umsetzung der Ideen in Code, Fehlersuche- und behebung, Codebuch und Corporate Design Artur Stolinsky:70 Stunden, Barbara Beck: 62 Stunden, Maren Krämer: 71 Stunden
+
+### Lessons learned
+
+Bericht-Team:
+
+-   Es war gar nicht so einfach, die jeweiligen Codes einfach und verständlich zu erklären.
+-   Das Zeitmanagement war schwierig, da wir uns zeitlich immer an das Codeteam anpassen mussten.
+-   Durch Veränderungen im Code mussten wir Texte öfter überarbeiten
+-   Nicht jede Antwort ließ sich leicht belegen.
+-   Viel Literatur und Recherche waren notwendig, um unsere Ergebnisse zu erklären.
+-   Der Versuch, Kausalitäten zwischen häufigen Rügen und besonderen Ereignissen herzustellen, hat oft nicht funktioniert.
+
+Code-Team:
+
+-   Die Such- und Replace-Funktion in R um Namen nachträglich zu ändern ist sehr nützlich.
+-   Je nachdem, welche Visualisierung man vornehmen will (bspw. Größe der Knoten nach degree) muss man das Netztwerk gerichtet machen, um die Ziffern aus der Visualisierung auszuschließen.
+-   Mehrere Schritte sind vielleicht aufwendiger, aber dann weiß man auch was man getan hat.
+-   Man kann auch Diagramme mit Flourish erzeugen, wenn man für die jeweilige Analyse nicht unbedingt ein Netzwerk braucht.
+-   Es wurde zwar nicht immer der perfekte Befehl gefunden, man kann sich aber bei vielen Dingen mit einem Workaround behelfen.
+
+Gesamtes Team:
+
+-   Die gemeinsame Arbeit an einem R Dokument ist nicht einfach, da die Cloud-Option nicht so funktioniert hat wie wir uns das vorgestellt hatten. Die Versionen mussten ständig aktualisiert und neu gespeichert werden und es konnte nur eine Person gleichzeitig am Dokument arbeiten.
+-   Unser Thema ist kein klassisches Thema für eine Netzwerkanalyse, sodass einige Berechnungen (beispielsweise Zentralitäts- und Akteursmaße) keinen Mehrwert für unsere Arbeit geboten haben.
+-   Die wöchentlichen Treffen sind ein sinnvolles Mittel, um den Überblick zu bewahren und kontinuierlich an einem großen Projekt zu arbeiten.
+
+### Nominierung des MVP
+
+Maren Krämer
+
+## 7. Literatur
+
+-   Arlt, H.-J., & Storz, W.
+    (2011).
+    Drucksache „Bild"---Eine Marke und ihre Mägde (Otto Brenner Stiftung, Hrsg.). Frankfurt. Abgerufen von <https://www.otto-brenner-stiftung.de/wissenschaftsportal/informationsseiten-zu-studien/studien-2011/drucksache-bild/>
+
+-   „Bild" - Kampagne gegen Presserat. (2015). Frankfurter Rundschau.https://www.fr.de/kultur/bild-kampagne-gegen-presserat-11175873.html Ballweg, S. (2018).Fast jede zweite Rüge wegen Schleichwerbung. Deutschlandfunk.https://www.deutschlandfunk.de/jahresbilanz-des-presserats-fast-jede-zweite-ruege-wegen.2907.de.html?dram:article_id=412422
+
+-   Bundesgesetzblatt (1952) Teil I Nr. 15, ausgegeben am 31.03.1952, S.
+    221
+
+-   Der Deutsche Presserat ist eine wichtige Institution, nutzt aber sein Chancenpotential nicht.
+    (2006).
+    Netzwerk Recherche.https://netzwerkrecherche.org/blog/der-deutsche-presserat-ist-eine-wichtige-institution-nutzt-aber-sein-chancenpotential-nicht/
+
+-   Der Presserat und sein Verhältnis zur Bild-Zeitung.
+    (2015).
+    Grin.https://www.grin.com/document/304198
+
+-   Deutscher Presserat.
+    (2021).https://www.presserat.de/pressefreiheit.html
+
+-   Die Zeitungen im Medienland Deutschland.
+    (2012).
+    Deutschland.de.https://www.deutschland.de/de/topic/kultur/kommunikation-medien/die-zeitungen-im-medienland-deutschland
+
+-   Digitale Offensive: B.Z.
+    und Berlin-Redaktion von BILD bündeln die Kräfte / BILD-Regionalstandorte werden digital gestärkt / Neues Redaktionsbüro in Los Angeles.
+    (2013).
+    Axel Springer.https://www.axelspringer.com/de/presseinformationen/digitale-offensive-b-z-und-berlin-redaktion-von-bild-buendeln-die-kraefte-bild-regionalstandorte-werden-digital-gestaerkt-neues-redaktionsbuero-in-los-angeles
+
+-   Express (deutsche Zeitung).
+    (2021).
+    Wikipedia.https://de.wikipedia.org/wiki/Express\_(deutsche_Zeitung)
+
+-   EXPRESS.DE ist der meistbesuchte Onlineauftritt der regionalen Tageszeitungen in Deutschland.
+    (2011).
+    DuMont.https://www.dumont.de/presse-news/presse/artikel/expressde-ist-der-meistbesuchte-onlineauftritt-der-regionalen-tageszeitungen-in-deutschland.html
+
+-   Gamper M.
+
+(2020) Netzwerkanalyse -- eine methodische Annäherung. In: Klärner A., Gamper M., Keim - Klärner S., Moor I., von der Lippe H., Vonneilich N. (eds) Soziale Netzwerke und gesundheitliche Ungleichheiten. Springer VS, Wiesbaden.https://doi.org/10.1007/978-3-658-21659-7_6
+
+-   HORIZONT-Ranking: Bertelsmann, Kirch, Axel Springer sind die Top-Medienunternehmen Deutschlands.
+    (2001).
+    Horizont.https://www.horizont.net/medien/nachrichten/-HORIZONT-Ranking-Bertelsmann-Kirch-Axel-Springer-sind-die-Top-Medienunternehmen-Deutschlands-31500
+
+-   Impressum.
+    (2016).
+    Taz.https://taz.de/!1
+    12354/
+
+-   Impressum.
+    (2020).
+    Express.https://www.express.de/impressum/impressum-22946966
+
+-   Impressum.
+    (2021).
+    Mopo.https://www.mopo.de/angebotsinformation/impressum-22385624
+
+-   Impressum.
+    (2021b).
+    Morgenpost.https://www.morgenpost-sachsen.de/impressum
+
+-   Impressum.
+    (2021c).
+    Berliner Kurier.
+    <https://www.berliner-kurier.de/impressum.76705>
+
+-   Impressum und Datenschutz.
+    (2014).
+    B.Z.
+    Berlin.https://www.bz-berlin.de/allgemein/impressum-und-datenschutz
+
+-   Internetauftritt erneuert.
+    (2008).
+    Deutscher Presserat.https://www.presserat.de/presse-nachrichten-details/internetauftritt-erneuert.html
+
+-   IT & Tech.
+    (2021).
+    Manager Magazin.https://www.manager-magazin.de/digitales/it/
+
+-   Jede vierte Rüge des Presserats betraf „Bild" (2014). Norddeutscher Rundfunk.https://web.archive.org/web/20140818150444/<http:/www.ndr.de/fernsehen/sendungen/zapp/blog/wie-viel-ruegen-bild-zeitung-pressekodex-statistik,presserat104.html>
+
+-   Kahlschlag bei Pabel-Moewig.
+    (2020).
+    Badisches Tagblatt.https://www.badisches-tagblatt.de/Lokales/Rastatt/Kahlschlag-bei-Pabel-Moewig-44550.html
+
+-   Leser beschweren sich vermehrt beim Presserat.
+    (2020).
+    Zeit Online.https://www.zeit.de/kultur/2020-03/deutscher-presserat-werbung-schleichwerbung-beschwerden
+
+-   Leyendecker, H.
+    (2011).
+    Bild dir deine Kohle.
+    Süddeutsche Zeitung.
+    <https://www.sueddeutsche.de/medien/studie-ueber-bild-zeitung-bild-dir-deine-kohle-1.1081180>
+
+-   Metz T.
+
+(2017) Netzwerkanalyse. In: Jäckle S. (eds) Neue Trends in den Sozialwissenschaften. Springer VS, Wiesbaden.https://doi.org/10.1007/978-3-658-17189-6_8
+
+-   Milakovic, M., Alfarano, S.
+    & Lux, T. Der dichte Kern des Netzwerks deutscher Aufsichtsräte und Unternehmensvorstände.Wirtschaftsdienst 92, 770--776 (2012).https://doi.org/10.1007/s10273-012-1453-5
+
+-   Ohliger U.A.
+
+(2019) Entwicklung und Charakteristika der Boulevardpresse in Deutschland. In: Kennzeichen und Wandel der Politikberichterstattung im Boulevardjournalismus. Springer VS, Wiesbaden.https://doi.org/10.1007/978-3-658-27184-8_2
+
+-   Online Recherche.
+    (2021).
+    Presserat.https://recherche.presserat.info
+
+-   Presserat fordert klare Kennzeichnung von Werbung.
+    (2005).
+    Deutscher Presserat.https://www.presserat.de/presse-nachrichten-details/presserat-fordert-klare-kennzeichnung-von-werbung.html
+
+-   Presserat überarbeitet Ziffer 8.
+    (2013).
+    Deutscher Presserat.
+    [https://www.presserat.de/presse-nachrichten-details/presserat-überarbeitet-ziffer-8.html](https://www.presserat.de/presse-nachrichten-details/presserat-überarbeitet-ziffer-8.html){.uri}
+
+-   Ranking der auflagestärksten überregionalen Tageszeitungen in Deutschland im 1.
+    Quartal 2021.
+    (2021).
+    Statista.
+    <https://de.statista.com/statistik/daten/studie/73448/umfrage/auflage-der-ueberregionalen-tageszeitungen/>
+
+-   Redaktionsstatut.
+    (2008).
+    Taz.https://taz.de/!1
+    14802/ taz-Polizeikolumne verstößt nicht gegen den Pressekodex.
+    (2020).
+    Deutscher Presserat.https://www.presserat.de/presse-nachrichten-details/taz-polizeikolumne-kein-versto%C3%9F-gegen-den-pressekodex.html
+
+-   Vor 60 Jahren gegründet : Der Deutsche Presserat als Ethik-Instanz.
+    (2016b).
+    DPB.https://www.bpb.de/politik/hintergrund-aktuell/237615/deutscher-presserat
+
+-   Wie die deutsche Presse sich selbst kontrolliert.
+    (2020).
+    Deutschlandfunk.https://www.deutschlandfunk.de/presserat-wie-die-deutsche-presse-sich-selbst-kontrolliert.724.de.html?d
+    ram:article_id=483730
